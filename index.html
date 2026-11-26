@@ -1,0 +1,2100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Colegio Montano Cortijo - Pizarra Digital de Planificaciones (Tercero Básico)</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            montano: {
+              navy: '#15368A',
+              darkNavy: '#0F2766',
+              mediumBlue: '#3B66B3',
+              hoverBlue: '#2F5599',
+              gold: '#FACC15',
+              goldHover: '#EAB308',
+              bg: '#F1F5F9',
+              text: '#334155',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #F1F5F9;
+      color: #334155;
+    }
+
+    /* Tarjeta institucional */
+    .montano-card {
+      background-color: #FFFFFF;
+      border-radius: 12px;
+      border-left: 6px solid #15368A;
+      box-shadow: 0 4px 14px rgba(15, 39, 102, 0.08);
+    }
+
+    /* Pestañas estilo carpeta institucional */
+    .tab-btn {
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+      font-weight: 700;
+      font-style: italic;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      transition: all 0.2s ease;
+    }
+
+    .tab-active {
+      background-color: #FACC15;
+      color: #15368A;
+      border-bottom: 4px solid #15368A;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .tab-inactive {
+      background-color: #3B66B3;
+      color: #FFFFFF;
+      border-bottom: 4px solid transparent;
+    }
+
+    .tab-inactive:hover {
+      background-color: #2F5599;
+    }
+
+    /* Estilos de impresión limpios */
+    @media print {
+      body {
+        background-color: #FFFFFF !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .montano-card {
+        box-shadow: none !important;
+        border: 1px solid #CBD5E1;
+        border-left: 6px solid #15368A !important;
+        break-inside: avoid;
+        margin-bottom: 1.5rem;
+      }
+      header {
+        background-color: #15368A !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- ENCABEZADO INSTITUCIONAL SUPERIOR -->
+  <header class="bg-[#15368A] text-white shadow-md sticky top-0 z-30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex flex-col lg:flex-row items-center justify-between gap-3">
+      
+      <!-- Izquierda: Escudo Oficial y Nombre del Colegio -->
+      <div class="flex items-center gap-3.5 w-full lg:w-auto justify-center lg:justify-start">
+        <div class="flex-shrink-0 bg-white rounded-xl px-2 py-1.5 shadow-md border border-white/90 flex items-center justify-center" style="width: 72px; height: 82px;">
+          <svg viewBox="0 0 240 276" class="w-full h-full overflow-visible" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Escudo Oficial Colegio Montano Cortijo">
+            <defs>
+              <linearGradient id="cmcOuterBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#0284C7"/>
+                <stop offset="50%" stop-color="#0A4D9C"/>
+                <stop offset="100%" stop-color="#1E40AF"/>
+              </linearGradient>
+              <linearGradient id="cmcGoldFill" x1="20%" y1="5%" x2="80%" y2="95%">
+                <stop offset="0%" stop-color="#FEF08A"/>
+                <stop offset="35%" stop-color="#FACC15"/>
+                <stop offset="80%" stop-color="#F59E0B"/>
+                <stop offset="100%" stop-color="#D97706"/>
+              </linearGradient>
+              <linearGradient id="cmcRibbonBlue" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#07255A"/>
+                <stop offset="28%" stop-color="#0B3B82"/>
+                <stop offset="50%" stop-color="#10408A"/>
+                <stop offset="72%" stop-color="#0B3B82"/>
+                <stop offset="100%" stop-color="#07255A"/>
+              </linearGradient>
+              <filter id="cmcShadow" x="-12%" y="-12%" width="124%" height="124%">
+                <feDropShadow dx="0" dy="2" stdDeviation="2.2" flood-color="#07255A" flood-opacity="0.28"/>
+              </filter>
+              <path id="cmcRibbonCurve" d="M 30,174 Q 120,204 210,174"/>
+            </defs>
+
+            <path d="M 32,18 Q 120,34 208,18 L 208,120 C 208,176 158,208 120,222 C 82,208 32,176 32,120 Z"
+                  fill="url(#cmcOuterBlue)" filter="url(#cmcShadow)"/>
+            <path d="M 40,27 Q 120,42 200,27 L 200,119 C 200,169 154,199 120,212 C 86,199 40,169 40,119 Z"
+                  fill="#FFFFFF"/>
+            <path d="M 46,34 Q 120,48 194,34 L 194,118 C 194,163 151,191 120,203 C 89,191 46,163 46,118 Z"
+                  fill="#B45309"/>
+            <path d="M 49,37 Q 120,50 191,37 L 191,117 C 191,160 150,187 120,199 C 90,187 49,160 49,117 Z"
+                  fill="url(#cmcGoldFill)"/>
+            <path d="M 52,40 Q 120,52 188,40 L 188,88 Q 120,104 52,88 Z"
+                  fill="#FEF9C3" opacity="0.45"/>
+
+            <g filter="url(#cmcShadow)" transform="translate(0, 2) rotate(-2.5 120 112)">
+              <g fill="#0A4D9C" stroke="#0A4D9C" stroke-width="11" stroke-linejoin="miter" stroke-miterlimit="3">
+                <path d="M 111,88 L 111,72 L 99,64 L 68,64 L 56,74 L 56,130 L 68,140 L 99,140 L 111,132 L 111,116 L 93,116 L 93,124 L 74,124 L 74,80 L 93,80 L 93,88 Z"/>
+                <path d="M 121,140 L 121,64 L 139,64 L 154,96 L 169,64 L 187,64 L 187,140 L 169,140 L 169,95 L 154,124 L 139,95 L 139,140 Z"/>
+              </g>
+              <g fill="#FFFFFF" stroke="#FFFFFF" stroke-width="5.5" stroke-linejoin="miter" stroke-miterlimit="3">
+                <path d="M 111,88 L 111,72 L 99,64 L 68,64 L 56,74 L 56,130 L 68,140 L 99,140 L 111,132 L 111,116 L 93,116 L 93,124 L 74,124 L 74,80 L 93,80 L 93,88 Z"/>
+                <path d="M 121,140 L 121,64 L 139,64 L 154,96 L 169,64 L 187,64 L 187,140 L 169,140 L 169,95 L 154,124 L 139,95 L 139,140 Z"/>
+              </g>
+              <g fill="#0A4D9C">
+                <path d="M 111,88 L 111,72 L 99,64 L 68,64 L 56,74 L 56,130 L 68,140 L 99,140 L 111,132 L 111,116 L 93,116 L 93,124 L 74,124 L 74,80 L 93,80 L 93,88 Z"/>
+                <path d="M 121,140 L 121,64 L 139,64 L 154,96 L 169,64 L 187,64 L 187,140 L 169,140 L 169,95 L 154,124 L 139,95 L 139,140 Z"/>
+              </g>
+            </g>
+
+            <g filter="url(#cmcShadow)">
+              <polygon points="18,148 44,158 38,180 15,168" fill="#051B42"/>
+              <polygon points="222,148 196,158 202,180 225,168" fill="#051B42"/>
+              <path d="M 18,148 Q 120,185 222,148 L 217,179 Q 120,216 23,179 Z"
+                    fill="url(#cmcRibbonBlue)" stroke="#FFFFFF" stroke-width="1.4"/>
+              <text fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-weight="800" font-size="8.6" letter-spacing="0.45">
+                <textPath href="#cmcRibbonCurve" startOffset="50%" text-anchor="middle">EXCELENCIA HUMANA, ACADÉMICA Y FÍSICA</textPath>
+              </text>
+            </g>
+
+            <g fill="#0A4D9C">
+              <polygon points="62,230 64.4,235.5 70.4,236 65.8,239.9 67.2,245.7 62,242.6 56.8,245.7 58.2,239.9 53.6,236 59.6,235.5"/>
+              <polygon points="91,230 93.4,235.5 99.4,236 94.8,239.9 96.2,245.7 91,242.6 85.8,245.7 87.2,239.9 82.6,236 88.6,235.5"/>
+              <polygon points="120,230 122.4,235.5 128.4,236 123.8,239.9 125.2,245.7 120,242.6 114.8,245.7 116.2,239.9 111.6,236 117.6,235.5"/>
+              <polygon points="149,230 151.4,235.5 157.4,236 152.8,239.9 154.2,245.7 149,242.6 143.8,245.7 145.2,239.9 140.6,236 146.6,235.5"/>
+              <polygon points="178,230 180.4,235.5 186.4,236 181.8,239.9 183.2,245.7 178,242.6 172.8,245.7 174.2,239.9 169.6,236 175.6,235.5"/>
+            </g>
+
+            <text x="120" y="271" text-anchor="middle" fill="#0A4D9C"
+                  font-family="'Arial Black', Impact, sans-serif" font-weight="900" font-size="27" letter-spacing="2.8">
+              CORTIJO
+            </text>
+          </svg>
+        </div>
+        <div class="text-center lg:text-left">
+          <h1 class="text-lg sm:text-xl font-extrabold tracking-tight leading-tight uppercase text-white">
+            COLEGIO MONTANO CORTIJO
+          </h1>
+          <p class="text-xs sm:text-sm font-semibold italic text-[#FACC15]">
+            Pizarra Digital • Planificaciones Diarias — Expresión Artística
+          </p>
+        </div>
+      </div>
+
+      <!-- Centro: Caja de Metadatos del Curso -->
+      <div class="bg-[#0F2766]/85 border border-white/15 rounded-lg px-4 py-2 flex flex-wrap items-center justify-center gap-x-3.5 gap-y-1 text-xs sm:text-sm shadow-inner w-full lg:w-auto">
+        <div>
+          <span class="text-[#FACC15] font-bold italic">Curso:</span>
+          <span class="text-white font-medium ml-1">Expresión Artística (Danza y Teatro)</span>
+        </div>
+        <span class="hidden sm:inline text-white/30">|</span>
+        <div>
+          <span class="text-[#FACC15] font-bold italic">Grado:</span>
+          <span class="text-white font-medium ml-1">Tercero Básico</span>
+        </div>
+        <span class="hidden sm:inline text-white/30">|</span>
+        <div>
+          <span class="text-[#FACC15] font-bold italic">Docente:</span>
+          <span class="text-white font-medium ml-1">Miss Rebeca Sian</span>
+        </div>
+        <span class="hidden sm:inline text-white/30">|</span>
+        <div>
+          <span class="text-[#FACC15] font-bold italic">Periodo:</span>
+          <span class="text-white font-bold ml-1">70 minutos</span>
+        </div>
+      </div>
+
+      <!-- Derecha: Botón Pantalla Completa -->
+      <div class="no-print flex-shrink-0">
+        <button id="fullscreenBtn" onclick="toggleFullScreen()" class="bg-[#FACC15] hover:bg-[#EAB308] text-[#15368A] font-bold italic text-xs sm:text-sm px-4 py-2.5 rounded-lg shadow transition flex items-center gap-2 cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
+          <span id="fullscreenText">Pantalla Completa</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- BARRA DE PESTAÑAS PRINCIPALES Y TEMPORIZADOR DE PIZARRA -->
+  <div class="bg-[#E2E8F0]/80 border-b border-slate-300 no-print">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-3 pb-2 flex flex-col lg:flex-row lg:items-center justify-between gap-3">
+      
+      <!-- Pestañas Principales -->
+      <nav class="flex flex-wrap gap-2" aria-label="Navegación de Planificaciones">
+        <button id="tab-danza" onclick="switchTab('danza')" class="tab-btn tab-active px-3.5 sm:px-4 py-2.5 text-xs sm:text-sm cursor-pointer">
+          DANZA (CLASES 1–8)
+        </button>
+        <button id="tab-teatro" onclick="switchTab('teatro')" class="tab-btn tab-inactive px-3.5 sm:px-4 py-2.5 text-xs sm:text-sm cursor-pointer">
+          TEATRO (CLASES 1–8)
+        </button>
+        <button id="tab-evaluacion-danza" onclick="switchTab('evaluacion-danza')" class="tab-btn tab-inactive px-3.5 sm:px-4 py-2.5 text-xs sm:text-sm cursor-pointer">
+          EVALUACIÓN DANZA
+        </button>
+        <button id="tab-evaluacion-teatro" onclick="switchTab('evaluacion-teatro')" class="tab-btn tab-inactive px-3.5 sm:px-4 py-2.5 text-xs sm:text-sm cursor-pointer">
+          EVALUACIÓN TEATRO
+        </button>
+        <button id="tab-recuperacion" onclick="switchTab('recuperacion')" class="tab-btn tab-inactive px-3.5 sm:px-4 py-2.5 text-xs sm:text-sm cursor-pointer">
+          RECUPERACIÓN
+        </button>
+        <button id="tab-imprimir" onclick="switchTab('imprimir')" class="tab-btn tab-inactive px-3.5 sm:px-4 py-2.5 text-xs sm:text-sm cursor-pointer">
+          VISTA COMPLETA / IMPRIMIR
+        </button>
+      </nav>
+
+      <!-- Temporizador Rápido de Pizarra Digital (70 min o por momento) -->
+      <div class="bg-white border border-slate-300 rounded-xl px-3 py-1.5 flex items-center justify-between sm:justify-start gap-2.5 shadow-2xs">
+        <div class="flex items-center gap-1.5 text-xs font-bold text-[#15368A]">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[#3B66B3]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <span>Reloj de Clase:</span>
+        </div>
+        <span id="timerDisplay" class="font-mono font-extrabold text-sm sm:text-base text-[#15368A] bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">70:00</span>
+        <div class="flex items-center gap-1">
+          <button onclick="toggleTimer()" id="timerToggleBtn" class="bg-[#15368A] hover:bg-[#0F2766] text-[#FACC15] text-xs font-bold px-2.5 py-1 rounded-lg transition cursor-pointer">
+            Iniciar
+          </button>
+          <button onclick="resetTimer(70)" class="bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs font-bold px-2 py-1 rounded-lg transition cursor-pointer" title="Reiniciar a 70 minutos">
+            70m
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 space-y-6">
+
+    <!-- ==================== VISTA 1: PLANES DE DANZA (CLASES 1 A 8) ==================== -->
+    <section id="view-danza" class="space-y-5">
+      <div class="bg-white rounded-xl p-4 shadow-sm border border-slate-200 flex flex-col gap-3 no-print">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div class="flex items-center gap-2">
+            <span class="bg-[#15368A] text-[#FACC15] text-xs font-extrabold italic uppercase px-2.5 py-1 rounded-md">
+              ÁREA • DANZA
+            </span>
+            <span class="text-xs sm:text-sm font-bold text-slate-600">
+              Clases 1–2: Lenguaje creativo, improvisación y coreografía • Clases 3–8: Ensayos de la sección completa con canción y danza asignadas por la docente:
+            </span>
+          </div>
+          <div class="flex items-center gap-2">
+            <button onclick="toggleShowAll('danza')" id="btn-all-danza" class="text-xs font-bold px-3 py-1.5 rounded-lg border border-[#15368A] text-[#15368A] hover:bg-blue-50 transition cursor-pointer">
+              Ver todas (8 clases)
+            </button>
+          </div>
+        </div>
+
+        <!-- Botones numerados Clase 1 a Clase 8 -->
+        <div id="danza-selector-bar" class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2"></div>
+      </div>
+
+      <!-- Contenedor de la Tarjeta de Planificación de Danza -->
+      <div id="danza-plan-container" class="space-y-6"></div>
+    </section>
+
+    <!-- ==================== VISTA 2: PLANES DE TEATRO (CLASES 1 A 8) ==================== -->
+    <section id="view-teatro" class="space-y-5 hidden">
+      <div class="bg-white rounded-xl p-4 shadow-sm border border-slate-200 flex flex-col gap-3 no-print">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div class="flex items-center gap-2">
+            <span class="bg-[#15368A] text-[#FACC15] text-xs font-extrabold italic uppercase px-2.5 py-1 rounded-md">
+              ÁREA • TEATRO
+            </span>
+            <span class="text-xs sm:text-sm font-bold text-slate-600">
+              Clases 1–3: Dramaturgia, estructura teatral, formas dramáticas y Método de Cali • Clases 4–8: Ensayos de montaje teatral:
+            </span>
+          </div>
+          <div class="flex items-center gap-2">
+            <button onclick="toggleShowAll('teatro')" id="btn-all-teatro" class="text-xs font-bold px-3 py-1.5 rounded-lg border border-[#15368A] text-[#15368A] hover:bg-blue-50 transition cursor-pointer">
+              Ver todas (8 clases)
+            </button>
+          </div>
+        </div>
+
+        <!-- Botones numerados Clase 1 a Clase 8 -->
+        <div id="teatro-selector-bar" class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2"></div>
+      </div>
+
+      <!-- Contenedor de la Tarjeta de Planificación de Teatro -->
+      <div id="teatro-plan-container" class="space-y-6"></div>
+    </section>
+
+    <!-- ==================== VISTA 3: EVALUACIÓN DE DANZA (100 PTS) ==================== -->
+    <section id="view-evaluacion-danza" class="space-y-8 hidden">
+      <div class="montano-card p-5 sm:p-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-slate-200 mb-6">
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="bg-[#15368A] text-[#FACC15] text-xs font-extrabold italic uppercase px-2.5 py-0.5 rounded">ÁREA DANZA</span>
+              <span class="text-xs font-bold text-slate-500 uppercase">Tercero Básico • 8 Clases Dosificadas (Sección Completa)</span>
+            </div>
+            <h2 class="text-xl sm:text-2xl font-extrabold italic uppercase text-[#15368A] tracking-tight">
+              EVALUACIÓN DE DANZA — DISTRIBUCIÓN DE 100 PUNTOS (4 PROYECTOS DE 25 PTS)
+            </h2>
+          </div>
+          <span class="inline-flex items-center px-3.5 py-1.5 rounded-lg bg-[#15368A] text-[#FACC15] text-xs font-extrabold italic uppercase shadow-sm self-start sm:self-auto">
+            Total Danza: 100 Pts
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="bg-slate-50 border border-slate-200 border-l-4 border-l-[#15368A] rounded-xl p-4 sm:p-5">
+            <div class="flex justify-between items-center mb-2">
+              <span class="text-xs font-extrabold uppercase text-[#3B66B3]">Proyecto 1 • Contenidos Prácticos</span>
+              <span class="bg-[#15368A] text-[#FACC15] text-xs font-extrabold px-2.5 py-0.5 rounded">25 Pts</span>
+            </div>
+            <h3 class="font-extrabold text-[#15368A] text-base mb-1.5">Aplicación Práctica en Clase (Clases 1, 2 y 7)</h3>
+            <ul class="text-xs sm:text-sm text-slate-700 space-y-1 list-disc pl-4">
+              <li><strong>Clase 1 (9 pts):</strong> Improvisación dancística y combinación de movimientos originales inspirados en relatos literarios, emociones y temáticas creativas.</li>
+              <li><strong>Clase 2 (8 pts):</strong> Ejecución práctica de tipos de coreografía (unísono, canon, simétrica y asimétrica) aplicando espacio, ritmo y estilo narrativo.</li>
+              <li><strong>Clase 7 (8 pts):</strong> Aplicación de crítica constructiva fundamentada (claridad narrativa de la danza asignada, espacio, ritmo y expresión) retroalimentando a sus compañeros de sección.</li>
+            </ul>
+          </div>
+
+          <div class="bg-slate-50 border border-slate-200 border-l-4 border-l-[#3B66B3] rounded-xl p-4 sm:p-5">
+            <div class="flex justify-between items-center mb-2">
+              <span class="text-xs font-extrabold uppercase text-[#3B66B3]">Proyecto 2 • Evidencias Escritas</span>
+              <span class="bg-[#15368A] text-[#FACC15] text-xs font-extrabold px-2.5 py-0.5 rounded">25 Pts</span>
+            </div>
+            <h3 class="font-extrabold text-[#15368A] text-base mb-1.5">Portafolio Físico Laminado de Danza</h3>
+            <ul class="text-xs sm:text-sm text-slate-700 space-y-1 list-disc pl-4">
+              <li><strong>Clase 1 (5 pts):</strong> Hoja de trabajo «Bitácora de Movimiento Creativo e Improvisación Narrativa».</li>
+              <li><strong>Clase 2 (8 pts):</strong> Dossier del Proyecto Coreográfico: «Tipos de Coreografía, Sinopsis de la Obra Dancística y Simbología de Vestuario/Escenografía».</li>
+              <li><strong>Clase 5 (4 pts):</strong> Guion Espacial y Mapa de Escenas Coreográficas de la sección (Inicio, Nudo y Desenlace en movimiento).</li>
+              <li><strong>Clase 7 (3 pts):</strong> Ficha de Evaluación entre Pares y Crítica Constructiva.</li>
+              <li><strong>Clase 8 (5 pts):</strong> Presentación completa del folder decorado, emplasticado, limpio e identificado con todas las rúbricas archivadas.</li>
+            </ul>
+          </div>
+
+          <div class="bg-amber-50/40 border border-amber-200 border-l-4 border-l-[#FACC15] rounded-xl p-4 sm:p-5">
+            <div class="flex justify-between items-center mb-2">
+              <span class="text-xs font-extrabold uppercase text-[#3B66B3]">Proyecto 3 • Montaje Coreográfico</span>
+              <span class="bg-[#15368A] text-[#FACC15] text-xs font-extrabold px-2.5 py-0.5 rounded">25 Pts</span>
+            </div>
+            <h3 class="font-extrabold text-[#15368A] text-base mb-1.5">Proceso de Ensayos de la Sección Completa (Clases 3 a 8)</h3>
+            <ul class="text-xs sm:text-sm text-slate-700 space-y-1 list-disc pl-4">
+              <li><strong>Ensayo 1 — Clase 3 (4 pts):</strong> Asignación oficial por la docente de la canción y la danza/temática para toda la sección, ubicación inicial del elenco completo y montaje de apertura.</li>
+              <li><strong>Ensayo 2 — Clase 4 (4 pts):</strong> Exploración e improvisación de movimientos acordes a la danza asignada y fijación de secuencias temáticas en la sección.</li>
+              <li><strong>Ensayo 3 — Clase 5 (4 pts):</strong> Organización de la coreografía de la sección completa, distribución de movimientos, desplazamientos, ritmo y expresión corporal.</li>
+              <li><strong>Ensayo 4 — Clase 6 (4 pts):</strong> Práctica de la coreografía completa de la sección, coordinación grupal, conexión entre movimientos y ajustes de espacio y estilo.</li>
+              <li><strong>Ensayo 5 — Clase 7 (4 pts):</strong> Presentación de avances en aula por bloques de observación y aplicación de retroalimentación constructiva en la sección.</li>
+              <li><strong>Ensayo 6 — Clase 8 (5 pts):</strong> Ensayo general de la sección completa con la canción asignada, vestuario simbólico y recursos escénicos.</li>
+            </ul>
+          </div>
+
+          <div class="bg-slate-50 border border-slate-200 border-l-4 border-l-[#15368A] rounded-xl p-4 sm:p-5">
+            <div class="flex justify-between items-center mb-2">
+              <span class="text-xs font-extrabold uppercase text-[#3B66B3]">Proyecto 4 • Muestra Escénica</span>
+              <span class="bg-[#FACC15] text-[#15368A] text-xs font-extrabold px-2.5 py-0.5 rounded">25 Pts</span>
+            </div>
+            <h3 class="font-extrabold text-[#15368A] text-base mb-1.5">Presentación Final de la Obra Dancística (Fecha Posterior)</h3>
+            <ul class="text-xs sm:text-sm text-slate-700 space-y-1 list-disc pl-4">
+              <li><strong>Claridad narrativa y coherencia con la danza/temática asignada (8 pts):</strong> Transmite con claridad la historia, idea o atmósfera planteada en el montaje de la sección.</li>
+              <li><strong>Técnica coreográfica, ritmo y uso del espacio (9 pts):</strong> Ejecuta formaciones, tipos de coreografía (unísono, canon, simetría) y coordinación de toda la sección con precisión musical.</li>
+              <li><strong>Simbología de vestuario, expresión y presencia escénica (8 pts):</strong> Integración de vestuario/elementos simbólicos, expresividad interpretativa y cierre.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== VISTA 4: EVALUACIÓN DE TEATRO (100 PTS - INTACTO) ==================== -->
+    <section id="view-evaluacion-teatro" class="space-y-8 hidden">
+      <div class="montano-card p-5 sm:p-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-slate-200 mb-6">
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="bg-[#15368A] text-[#FACC15] text-xs font-extrabold italic uppercase px-2.5 py-0.5 rounded">ÁREA TEATRO</span>
+              <span class="text-xs font-bold text-slate-500 uppercase">Tercero Básico • 8 Clases Dosificadas</span>
+            </div>
+            <h2 class="text-xl sm:text-2xl font-extrabold italic uppercase text-[#15368A] tracking-tight">
+              EVALUACIÓN DE TEATRO — DISTRIBUCIÓN DE 100 PUNTOS (4 PROYECTOS DE 25 PTS)
+            </h2>
+          </div>
+          <span class="inline-flex items-center px-3.5 py-1.5 rounded-lg bg-[#15368A] text-[#FACC15] text-xs font-extrabold italic uppercase shadow-sm self-start sm:self-auto">
+            Total Teatro: 100 Pts
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="bg-slate-50 border border-slate-200 border-l-4 border-l-[#15368A] rounded-xl p-4 sm:p-5">
+            <div class="flex justify-between items-center mb-2">
+              <span class="text-xs font-extrabold uppercase text-[#3B66B3]">Proyecto 1 • Contenidos Prácticos</span>
+              <span class="bg-[#15368A] text-[#FACC15] text-xs font-extrabold px-2.5 py-0.5 rounded">25 Pts</span>
+            </div>
+            <h3 class="font-extrabold text-[#15368A] text-base mb-1.5">Aplicación Práctica en Clase (Clases 1, 2 y 3)</h3>
+            <ul class="text-xs sm:text-sm text-slate-700 space-y-1 list-disc pl-4">
+              <li><strong>Clase 1 (8 pts):</strong> Escena corta aplicando los 4 elementos de la dramaturgia (acción, conflicto, personaje y cronotipo) y estructura (inicio, nudo, desenlace).</li>
+              <li><strong>Clase 2 (8 pts):</strong> Muestra comparativa práctica diferenciando monólogo/unipersonal, soliloquio y diálogo en cuadros y escenas.</li>
+              <li><strong>Clase 3 (9 pts):</strong> Taller práctico de Creación Colectiva (Método de Cali): improvisación grupal de escenas e interpretación vocal del texto teatral.</li>
+            </ul>
+          </div>
+
+          <div class="bg-slate-50 border border-slate-200 border-l-4 border-l-[#3B66B3] rounded-xl p-4 sm:p-5">
+            <div class="flex justify-between items-center mb-2">
+              <span class="text-xs font-extrabold uppercase text-[#3B66B3]">Proyecto 2 • Evidencias Escritas</span>
+              <span class="bg-[#15368A] text-[#FACC15] text-xs font-extrabold px-2.5 py-0.5 rounded">25 Pts</span>
+            </div>
+            <h3 class="font-extrabold text-[#15368A] text-base mb-1.5">Portafolio Físico Laminado de Teatro</h3>
+            <ul class="text-xs sm:text-sm text-slate-700 space-y-1 list-disc pl-4">
+              <li><strong>Clase 1 (5 pts):</strong> Hoja de trabajo «Arquitectura Dramatúrgica: Acción, Conflicto, Personaje y Cronotipo».</li>
+              <li><strong>Clase 2 (5 pts):</strong> Hoja de trabajo «Estructura Teatral y Formas de Expresión Dramática (Monólogo, Soliloquio y Diálogo)».</li>
+              <li><strong>Clase 3 (5 pts):</strong> Esquema «Fases del Montaje Teatral y Método de Creación Colectiva (Método de Cali)».</li>
+              <li><strong>Clases 4 y 5 (5 pts):</strong> Guion teatral original o adaptado estructurado en actos, cuadros y escenas con acotaciones.</li>
+              <li><strong>Clase 8 (5 pts):</strong> Folder decorado, emplasticado, identificado y limpio con todas las rúbricas archivadas.</li>
+            </ul>
+          </div>
+
+          <div class="bg-amber-50/40 border border-amber-200 border-l-4 border-l-[#FACC15] rounded-xl p-4 sm:p-5">
+            <div class="flex justify-between items-center mb-2">
+              <span class="text-xs font-extrabold uppercase text-[#3B66B3]">Proyecto 3 • Montaje Teatral</span>
+              <span class="bg-[#15368A] text-[#FACC15] text-xs font-extrabold px-2.5 py-0.5 rounded">25 Pts</span>
+            </div>
+            <h3 class="font-extrabold text-[#15368A] text-base mb-1.5">Proceso de Ensayos de la Obra Teatral (Clases 4 a 8)</h3>
+            <ul class="text-xs sm:text-sm text-slate-700 space-y-1 list-disc pl-4">
+              <li><strong>Ensayo 1 — Clase 4 (5 pts):</strong> Selección o creación de propuesta teatral (tema, conflicto, personajes y estructura).</li>
+              <li><strong>Ensayo 2 — Clase 5 (5 pts):</strong> Elaboración y adaptación del guion teatral, diálogos, escenas y participación.</li>
+              <li><strong>Ensayo 3 — Clase 6 (5 pts):</strong> Distribución de personajes, dirección de actores, trazo escénico, entradas y salidas.</li>
+              <li><strong>Ensayo 4 — Clase 7 (5 pts):</strong> Práctica de escenas, interpretación de textos, expresión corporal, proyección de voz y producción.</li>
+              <li><strong>Ensayo 5 — Clase 8 (5 pts):</strong> Ensayo general integrando escenas, personajes, recursos escénicos y pulido final.</li>
+            </ul>
+          </div>
+
+          <div class="bg-slate-50 border border-slate-200 border-l-4 border-l-[#15368A] rounded-xl p-4 sm:p-5">
+            <div class="flex justify-between items-center mb-2">
+              <span class="text-xs font-extrabold uppercase text-[#3B66B3]">Proyecto 4 • Función de Cierre</span>
+              <span class="bg-[#FACC15] text-[#15368A] text-xs font-extrabold px-2.5 py-0.5 rounded">25 Pts</span>
+            </div>
+            <h3 class="font-extrabold text-[#15368A] text-base mb-1.5">Presentación Final de la Obra Teatral (Fecha Posterior)</h3>
+            <ul class="text-xs sm:text-sm text-slate-700 space-y-1 list-disc pl-4">
+              <li><strong>Solidez dramatúrgica y dirección escénica (8 pts):</strong> Claridad en conflicto, cronotipo, cuadros/escenas y fluidez de entradas y salidas.</li>
+              <li><strong>Interpretación actoral y proyección vocal (9 pts):</strong> Dominio de diálogos/monólogos, dicción, proyección de voz y expresión corporal.</li>
+              <li><strong>Producción colectiva y recursos escénicos (8 pts):</strong> Integración de escenografía, utilería, vestuario y trabajo en equipo.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== VISTA 5: RECUPERACIÓN (DANZA Y TEATRO - INTACTO) ==================== -->
+    <section id="view-recuperacion" class="space-y-6 hidden">
+      <!-- Barra de filtro interno por área -->
+      <div class="bg-white rounded-xl p-4 shadow-sm border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 no-print">
+        <div class="flex items-center gap-2">
+          <span class="bg-[#15368A] text-[#FACC15] text-xs font-extrabold italic uppercase px-2.5 py-1 rounded-md">
+            PLAN DE RECUPERACIÓN
+          </span>
+          <span class="text-xs sm:text-sm font-bold text-slate-600">
+            Actividades diferenciadas de nivelación en aula (70 min) • 25 pts por proyecto:
+          </span>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <button type="button" id="rec-filter-ambas" onclick="filterRecuperacion('ambas')" class="px-3.5 py-1.5 rounded-lg text-xs font-extrabold italic uppercase bg-[#15368A] text-[#FACC15] shadow-2xs transition cursor-pointer">
+            Ambas Áreas
+          </button>
+          <button type="button" id="rec-filter-danza" onclick="filterRecuperacion('danza')" class="px-3.5 py-1.5 rounded-lg text-xs font-extrabold italic uppercase bg-slate-100 hover:bg-blue-50 text-[#15368A] border border-slate-300 transition cursor-pointer">
+            Solo Danza
+          </button>
+          <button type="button" id="rec-filter-teatro" onclick="filterRecuperacion('teatro')" class="px-3.5 py-1.5 rounded-lg text-xs font-extrabold italic uppercase bg-slate-100 hover:bg-blue-50 text-[#15368A] border border-slate-300 transition cursor-pointer">
+            Solo Teatro
+          </button>
+        </div>
+      </div>
+
+      <!-- BLOQUE A: RECUPERACIÓN DANZA -->
+      <div id="rec-block-danza" class="montano-card p-5 sm:p-8 space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-slate-200">
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="bg-[#15368A] text-[#FACC15] text-xs font-extrabold italic uppercase px-2.5 py-0.5 rounded">ÁREA DANZA</span>
+              <span class="text-xs font-bold text-slate-500 uppercase">Tercero Básico • Recuperación en Aula (70 Min)</span>
+            </div>
+            <h2 class="text-xl sm:text-2xl font-extrabold italic uppercase text-[#15368A] tracking-tight">
+              TAREAS DE RECUPERACIÓN DETALLADAS — DANZA (4 PROYECTOS DE 25 PTS)
+            </h2>
+          </div>
+          <span class="inline-flex items-center px-3.5 py-1.5 rounded-lg bg-[#FACC15] text-[#15368A] text-xs font-extrabold italic uppercase shadow-sm self-start sm:self-auto">
+            25 Pts C/U • 100% en Aula
+          </span>
+        </div>
+
+        <div class="space-y-4">
+          <div class="bg-slate-50 border border-slate-200 border-l-4 border-l-[#15368A] rounded-xl p-4 sm:p-5">
+            <div class="flex justify-between items-center border-b border-slate-200 pb-2 mb-3">
+              <h3 class="font-extrabold text-[#15368A] text-base">1. Recuperación Proyecto 1 (25 pts): «Laboratorio Individual de Improvisación Literaria y Crítica Coreográfica»</h3>
+              <span class="bg-[#15368A] text-[#FACC15] text-xs font-bold px-2.5 py-1 rounded">35 min</span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-700 mb-2"><strong>Actividad diferente:</strong> Demostración solista en aula traduciendo dos escenas de un libro o temática creativa mediante movimientos improvisados y análisis oral fundamentado.</p>
+            <ol class="list-decimal pl-5 text-xs sm:text-sm text-slate-700 space-y-1">
+              <li><strong>Preparación y ejecución (25 min):</strong> Improvisa 16 tiempos representando el clima de suspenso o misterio de una historia literaria y 16 tiempos representando su momento de triunfo o esperanza aplicando cambios de nivel y dirección.</li>
+              <li><strong>Rúbrica (25 pts):</strong> Originalidad y fluidez en improvisación (9 pts), expresividad narrativa y uso del espacio (8 pts), aplicación de criterios de crítica constructiva (8 pts).</li>
+            </ol>
+          </div>
+
+          <div class="bg-slate-50 border border-slate-200 border-l-4 border-l-[#3B66B3] rounded-xl p-4 sm:p-5">
+            <div class="flex justify-between items-center border-b border-slate-200 pb-2 mb-3">
+              <h3 class="font-extrabold text-[#15368A] text-base">2. Recuperación Proyecto 2 (25 pts): «Cuaderno de Producción Coreográfica: Sinopsis Literaria y Simbología»</h3>
+              <span class="bg-[#15368A] text-[#FACC15] text-xs font-bold px-2.5 py-1 rounded">45 min</span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-700 mb-2"><strong>Actividad diferente:</strong> Elabora un dossier completo de 3 páginas en aula sobre una obra dancística inspirada en un libro o temática asignada.</p>
+            <ol class="list-decimal pl-5 text-xs sm:text-sm text-slate-700 space-y-1">
+              <li><strong>Contenido (35 min):</strong> Página 1: Sinopsis escrita de la obra dancística (libro o temática, conflicto narrativo y música); Página 2: Boceto ilustrado del vestuario y escenografía explicando su simbología de colores y elementos; Página 3: Mapa espacial de 3 tipos de coreografía (canon, simétrica y asimétrica).</li>
+              <li><strong>Rúbrica (25 pts):</strong> Redacción de sinopsis narrativa (9 pts), explicación de simbología visual (8 pts), diagramas coreográficos y orden (8 pts).</li>
+            </ol>
+          </div>
+
+          <div class="bg-amber-50/40 border border-amber-200 border-l-4 border-l-[#FACC15] rounded-xl p-4 sm:p-5">
+            <div class="flex justify-between items-center border-b border-slate-200 pb-2 mb-3">
+              <h3 class="font-extrabold text-[#15368A] text-base">3. Recuperación Proyecto 3 (25 pts): «Clínica Técnica de Secuencias Narrativas, Transiciones y Ritmo»</h3>
+              <span class="bg-[#15368A] text-[#FACC15] text-xs font-bold px-2.5 py-1 rounded">35 min</span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-700 mb-2"><strong>Actividad diferente:</strong> Sesión intensiva de verificación técnica y expresiva de la coreografía frente a la docente.</p>
+            <ol class="list-decimal pl-5 text-xs sm:text-sm text-slate-700 space-y-1">
+              <li><strong>Ejecución técnica (25 min):</strong> Ejecuta las tres fases de la coreografía (inicio, desarrollo/clímax y desenlace) con la música oficial, señalando oralmente los cambios de frente, desplazamientos y la intención expresiva de cada sección.</li>
+              <li><strong>Rúbrica (25 pts):</strong> Memorización de secuencias (9 pts), precisión rítmica y desplazamientos (8 pts), expresión corporal/gestual y autocorrección (8 pts).</li>
+            </ol>
+          </div>
+
+          <div class="bg-slate-50 border border-slate-200 border-l-4 border-l-[#15368A] rounded-xl p-4 sm:p-5">
+            <div class="flex justify-between items-center border-b border-slate-200 pb-2 mb-3">
+              <h3 class="font-extrabold text-[#15368A] text-base">4. Recuperación Proyecto 4 (25 pts): «Muestra Solista con Lectura de Sinopsis y Vestuario Simbólico»</h3>
+              <span class="bg-[#FACC15] text-[#15368A] text-xs font-bold px-2.5 py-1 rounded">50 min</span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-700 mb-2"><strong>Actividad diferente:</strong> Presentación individual en aula sustituyendo la muestra colectiva final.</p>
+            <ol class="list-decimal pl-5 text-xs sm:text-sm text-slate-700 space-y-1">
+              <li><strong>Puesta en escena (40 min):</strong> Lee en voz alta la sinopsis de su obra dancística (30 segundos), porta un elemento simbólico de vestuario o utilería y ejecuta 1 minuto 30 segundos de coreografía narrativa completa con entrada, desarrollo y cierre final.</li>
+              <li><strong>Rúbrica (25 pts):</strong> Coherencia temática/literaria y simbología (8 pts), dominio técnico, ritmo y espacio (9 pts), expresión escénica y cierre (8 pts).</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOQUE B: RECUPERACIÓN TEATRO -->
+      <div id="rec-block-teatro" class="montano-card p-5 sm:p-8 space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-slate-200">
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="bg-[#15368A] text-[#FACC15] text-xs font-extrabold italic uppercase px-2.5 py-0.5 rounded">ÁREA TEATRO</span>
+              <span class="text-xs font-bold text-slate-500 uppercase">Tercero Básico • Recuperación en Aula (70 Min)</span>
+            </div>
+            <h2 class="text-xl sm:text-2xl font-extrabold italic uppercase text-[#15368A] tracking-tight">
+              TAREAS DE RECUPERACIÓN DETALLADAS — TEATRO (4 PROYECTOS DE 25 PTS)
+            </h2>
+          </div>
+          <span class="inline-flex items-center px-3.5 py-1.5 rounded-lg bg-[#15368A] text-[#FACC15] text-xs font-extrabold italic uppercase shadow-sm self-start sm:self-auto">
+            25 Pts C/U • 100% en Aula
+          </span>
+        </div>
+
+        <div class="space-y-4">
+          <div class="bg-slate-50 border border-slate-200 border-l-4 border-l-[#15368A] rounded-xl p-4 sm:p-5">
+            <div class="flex justify-between items-center border-b border-slate-200 pb-2 mb-3">
+              <h3 class="font-extrabold text-[#15368A] text-base">1. Recuperación Proyecto 1 (25 pts): «Ejercicio Dramatúrgico: Monólogo vs. Soliloquio con Cronotipo»</h3>
+              <span class="bg-[#15368A] text-[#FACC15] text-xs font-bold px-2.5 py-1 rounded">35 min</span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-700 mb-2"><strong>Actividad diferente:</strong> Prueba práctica individual de dramaturgia e interpretación vocal en aula.</p>
+            <ol class="list-decimal pl-5 text-xs sm:text-sm text-slate-700 space-y-1">
+              <li><strong>Preparación y actuación (25 min):</strong> A partir de una experiencia personal, escribe y actúa un fragmento de 1 minuto dividido en dos momentos: un <em>monólogo</em> dirigido al público y un <em>soliloquio</em> de reflexión interna, marcando inicio, nudo y desenlace.</li>
+              <li><strong>Rúbrica (25 pts):</strong> Aplicación de elementos dramatúrgicos y cronotipo (9 pts), diferenciación clara entre monólogo y soliloquio (8 pts), proyección vocal y expresión corporal (8 pts).</li>
+            </ol>
+          </div>
+
+          <div class="bg-slate-50 border border-slate-200 border-l-4 border-l-[#3B66B3] rounded-xl p-4 sm:p-5">
+            <div class="flex justify-between items-center border-b border-slate-200 pb-2 mb-3">
+              <h3 class="font-extrabold text-[#15368A] text-base">2. Recuperación Proyecto 2 (25 pts): «Guion Dramático Completo y Esquema del Método de Cali»</h3>
+              <span class="bg-[#15368A] text-[#FACC15] text-xs font-bold px-2.5 py-1 rounded">45 min</span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-700 mb-2"><strong>Actividad diferente:</strong> Redacción en aula de una escena dramática original acompañada del mapa conceptual de creación colectiva.</p>
+            <ol class="list-decimal pl-5 text-xs sm:text-sm text-slate-700 space-y-1">
+              <li><strong>Elaboración escrita (35 min):</strong> Redacta un guion de 1 acto y 2 cuadros con acotaciones de cronotipo, conflicto y personajes, más un esquema explicando los pasos del Método de Creación Colectiva (Método de Cali).</li>
+              <li><strong>Rúbrica (25 pts):</strong> Estructura dramática formal (actos, cuadros, escenas y acotaciones) (10 pts), dominio del Método de Cali (8 pts), redacción y presentación limpia (7 pts).</li>
+            </ol>
+          </div>
+
+          <div class="bg-amber-50/40 border border-amber-200 border-l-4 border-l-[#FACC15] rounded-xl p-4 sm:p-5">
+            <div class="flex justify-between items-center border-b border-slate-200 pb-2 mb-3">
+              <h3 class="font-extrabold text-[#15368A] text-base">3. Recuperación Proyecto 3 (25 pts): «Taller de Dirección Escénica, Trazo y Proyección de Voz»</h3>
+              <span class="bg-[#15368A] text-[#FACC15] text-xs font-bold px-2.5 py-1 rounded">40 min</span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-700 mb-2"><strong>Actividad diferente:</strong> Simulación supervisada de dirección escénica y ensayo técnico sobre un texto asignado.</p>
+            <ol class="list-decimal pl-5 text-xs sm:text-sm text-slate-700 space-y-1">
+              <li><strong>Plan de dirección y ensayo (30 min):</strong> Dibuja la planta de movimientos (entradas, salidas y zonas escénicas) de una escena, indica los elementos de producción requeridos e interpreta los parlamentos con proyección vocal clara.</li>
+              <li><strong>Rúbrica (25 pts):</strong> Criterio de dirección y organización espacial (9 pts), proyección vocal e interpretación del texto (8 pts), propuesta de producción escénica (8 pts).</li>
+            </ol>
+          </div>
+
+          <div class="bg-slate-50 border border-slate-200 border-l-4 border-l-[#15368A] rounded-xl p-4 sm:p-5">
+            <div class="flex justify-between items-center border-b border-slate-200 pb-2 mb-3">
+              <h3 class="font-extrabold text-[#15368A] text-base">4. Recuperación Proyecto 4 (25 pts): «Estreno Unipersonal en Aula con Recursos Escénicos»</h3>
+              <span class="bg-[#FACC15] text-[#15368A] text-xs font-bold px-2.5 py-1 rounded">50 min</span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-700 mb-2"><strong>Actividad diferente:</strong> Puesta en escena unipersonal de 2 minutos en aula sustituyendo la presentación teatral grupal.</p>
+            <ol class="list-decimal pl-5 text-xs sm:text-sm text-slate-700 space-y-1">
+              <li><strong>Montaje y función (40 min):</strong> Ambienta el espacio con utilería del salón, interpreta de memoria una pieza breve con inicio, nudo y desenlace definidos, utilizando variaciones vocales y cierre escénico (venia).</li>
+              <li><strong>Rúbrica (25 pts):</strong> Estructura dramatúrgica y conflicto claro (8 pts), interpretación actoral, voz y expresión corporal (9 pts), uso de recursos escénicos y cierre (8 pts).</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== VISTA 6: VISTA IMPRIMIBLE COMPLETA ==================== -->
+    <section id="view-imprimir" class="space-y-6 hidden">
+      <div class="bg-white rounded-xl p-5 shadow-sm border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4 no-print">
+        <div>
+          <h2 class="text-lg sm:text-xl font-extrabold italic uppercase text-[#15368A]">
+            EXPEDIENTE COMPLETO DE PLANIFICACIÓN — TERCERO BÁSICO
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-600">
+            Incluye las 8 clases de Danza, las 8 clases de Teatro, cuadros de evaluación (100 pts) y tareas de recuperación listos para imprimir o guardar PDF.
+          </p>
+        </div>
+        <button onclick="window.print()" class="bg-[#15368A] hover:bg-[#0F2766] text-white font-bold italic text-xs sm:text-sm px-5 py-2.5 rounded-lg shadow transition flex items-center gap-2 self-start sm:self-auto cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[#FACC15]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+            <rect x="6" y="14" width="12" height="8"></rect>
+          </svg>
+          Imprimir / Guardar PDF
+        </button>
+      </div>
+
+      <div id="print-all-container" class="space-y-6"></div>
+    </section>
+
+  </main>
+
+  <!-- PIE DE PÁGINA -->
+  <footer class="bg-white border-t border-slate-200 py-4 mt-8 no-print">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-2">
+      <p class="font-semibold text-[#15368A]">Colegio Montano Cortijo — Área de Expresión Artística</p>
+      <p>Tercero Básico • Períodos de 70 Minutos • Ciclo Escolar 2027</p>
+    </div>
+  </footer>
+
+  <!-- LÓGICA DE DATOS E INTERACTIVIDAD -->
+  <script>
+    // Competencias e Indicadores de Logro Oficiales (Tercero Básico - Expresión Artística)
+    const COMP_BASICO3_DANZA_1 = "Crea movimientos que representan expresiones, ideas, sentimientos e intereses de su cultura u otras culturas.";
+    const COMP_BASICO3_DANZA_2 = "Evalúa los movimientos de su cuerpo con los movimientos de los demás en trabajos individuales y colectivos promoviendo la crítica constructiva.";
+
+    const IND_BASICO3_DANZA_1 = "1.1. Combina movimientos originales para representar a su cultura y otras culturas. 1.2. Improvisa con movimientos no planificados que representan su cultura y la de otros.";
+    const IND_BASICO3_DANZA_2 = "1.3. Ensaya sus proyectos dancísticos con fines de intercambio, coordinación y enriquecimiento artístico.";
+    const IND_BASICO3_DANZA_3 = "1.1. Combina movimientos originales para representar a su cultura y otras culturas.";
+    const IND_BASICO3_DANZA_4 = "1.2. Improvisa con movimientos no planificados que representan su cultura y la de otros.";
+    const IND_BASICO3_DANZA_5 = "2.3. Utiliza el recurso de la crítica constructiva para retroalimentar a sus compañeros.";
+
+    const COMP_BASICO3_TEATRO_1 = "Produce obras de teatro utilizando los elementos de la dramaturgia.";
+    const COMP_BASICO3_TEATRO_2 = "Recrea la dirección escénica utilizando para ello textos teatrales propios o ajenos.";
+    const COMP_BASICO3_TEATRO_3 = "Analiza y argumenta discursos desde la dramaturgia de diversos autores latinoamericanos.";
+
+    const IND_BASICO3_TEATRO_1 = "1.1. Escribe obras con los elementos centrales de la dramaturgia.";
+    const IND_BASICO3_TEATRO_2 = "1.2. Crea textos teatrales a partir de sus experiencias de vida. 1.3. Elabora su propio discurso teatral por medio de diversos ejercicios de dramaturgia.";
+    const IND_BASICO3_TEATRO_3 = "2.1. Dirige prácticas de dirección escénica. 2.2. Coordina creaciones colectivas. 2.3. Utiliza su voz correctamente en la experimentación e interpretación de textos.";
+    const IND_BASICO3_TEATRO_4 = "1.2. Crea textos teatrales a partir de sus experiencias de vida.";
+    const IND_BASICO3_TEATRO_5 = "2.1. Dirige prácticas de dirección escénica.";
+    const IND_BASICO3_TEATRO_6 = "2.2. Coordina creaciones colectivas. 2.3. Utiliza su voz correctamente en la experimentación e interpretación de textos.";
+    const IND_BASICO3_TEATRO_7 = "3.1. Reflexiona sobre las opciones y hechos dramáticos que existen.";
+
+    // ================= 8 PLANES DIARIOS DE DANZA (TERCERO BÁSICO - 70 MIN) =================
+    const planesDanza = [
+      {
+        area: "Danza",
+        clase: 1,
+        fase: "Desarrollo",
+        tema: "La danza como lenguaje creativo y representativo: improvisación dancística a partir de libros y temáticas variadas",
+        competencia: COMP_BASICO3_DANZA_1,
+        indicador: IND_BASICO3_DANZA_1,
+        contenido: "La danza como lenguaje creativo y representativo de diversas culturas. Movimientos no planificados, creatividad e improvisación dancística.",
+        habilidadesBlandas: [
+          "Desinhibición creativa y confianza en la expresión personal",
+          "Interpretación corporal de ideas, libros, emociones y fenómenos de la realidad",
+          "Escucha corporal y adaptabilidad en improvisación"
+        ],
+        habitoCovey: {
+          titulo: "Hábito 1: Ser Proactivo",
+          explicacion: "El estudiante responde con iniciativa propia ante estímulos literarios, musicales y temáticos mediante movimientos no planificados, superando el temor a equivocarse."
+        },
+        materiales: [
+          "Bocina con pistas instrumentales de diversas atmósferas (misterio/aventura, tensión dramática, fantasía y energía contemporánea)",
+          "Tarjetas detonantes con fragmentos breves de libros y temáticas variadas (ej. un viaje inesperado, el paso del tiempo, superación de un obstáculo, mundo fantástico)",
+          "Hoja de trabajo «Bitácora de Movimiento Creativo e Improvisación Narrativa» (para portafolio)"
+        ],
+        momentos: [
+          {
+            nombre: "1. Introducción motivante y explicación del tema",
+            tiempo: 15,
+            actividades: [
+              "<strong>Dinámica «El Cuerpo que Narra sin Palabras»:</strong> La docente lee en voz alta tres micro-escenas literarias (un bosque encantado al anochecer, una carrera contra el reloj y el reencuentro tras una tormenta) acompañadas de música instrumental mientras el grupo traduce cada atmósfera con su postura y desplazamiento. Explica cómo la danza es un <em>lenguaje creativo y representativo</em> capaz de contar libros, ideas y temáticas sociales o fantásticas, diferenciando la <em>improvisación dancística</em> (movimientos espontáneos y no planificados) de la secuencia coreografiada."
+            ]
+          },
+          {
+            nombre: "2. Trabajo individual",
+            tiempo: 20,
+            actividades: [
+              "<strong>Laboratorio de Improvisación Narrativa (10 min):</strong> Cada estudiante improvisa movimientos originales explorando niveles (alto, medio, bajo) y calidades de energía a partir de 3 estímulos: a) un personaje literario frente a un dilema, b) una emoción intensa (asombro, valentía o nostalgia) y c) una temática de su interés.",
+              "<strong>Evidencia Escrita (10 min) — Hoja «Bitácora de Movimiento Creativo e Improvisación Narrativa» (Portafolio):</strong> Registra qué historias o temáticas le inspiran a bailar, dibuja dos posturas expresivas propias y describe cómo transformó una idea escrita en movimiento."
+            ]
+          },
+          {
+            nombre: "3. Trabajo grupal",
+            tiempo: 20,
+            actividades: [
+              "<strong>«De la Página al Movimiento» (Equipos de 4 a 5):</strong> Cada equipo recibe una tarjeta con un fragmento de libro o temática creativa y construye una secuencia de 32 tiempos combinando movimientos improvisados originales que comuniquen claramente el ambiente y la emoción de su tarjeta sin usar palabras."
+            ]
+          },
+          {
+            nombre: "4. Plenaria y actividad sugerida",
+            tiempo: 15,
+            actividades: [
+              "<strong>Muestra de Improvisación Temática (Evaluación Proyecto 1):</strong> Cada equipo presenta su secuencia de 32 tiempos mientras el resto del salón intenta adivinar de qué libro, atmósfera o temática se trata; la docente evalúa originalidad y expresividad mediante rúbrica.",
+              "<strong>Actividad Sugerida — «Círculo de Relevo Narrativo»:</strong> En círculo con música instrumental, un estudiante entra al centro, propone un movimiento improvisado que exprese una emoción o acción durante 8 tiempos y cede el relevo tocando el hombro de otro compañero para continuar la historia en movimiento."
+            ]
+          }
+        ],
+        evaluacion: [
+          { proyecto: "Proyecto 1 — Aplicación Práctica (9 pts)", detalle: "Rúbrica práctica: combina movimientos originales e improvisa con fluidez representando ideas, libros y temáticas diversas." },
+          { proyecto: "Proyecto 2 — Portafolio Físico (5 pts)", detalle: "Hoja de trabajo «Bitácora de Movimiento Creativo e Improvisación Narrativa» completa y archivada en el portafolio." }
+        ]
+      },
+      {
+        area: "Danza",
+        clase: 2,
+        fase: "Desarrollo",
+        tema: "Coreografía, tipos de coreografía, simbología de vestuario/escenografía y sinopsis de la obra dancística",
+        competencia: COMP_BASICO3_DANZA_1,
+        indicador: IND_BASICO3_DANZA_2,
+        contenido: "Coreografía y tipos de coreografía. Movimientos, ritmo y expresión corporal. Espacio y estilo. Selección de la danza según su contexto, elección de música, simbología del vestuario y escenografía, y elaboración de la sinopsis de la obra dancística.",
+        habilidadesBlandas: [
+          "Pensamiento conceptual y simbolismo visual",
+          "Planificación estética y redacción de sinopsis",
+          "Coordinación espacial y rítmica en grupo"
+        ],
+        habitoCovey: {
+          titulo: "Hábito 2: Comenzar con un Fin en Mente",
+          explicacion: "Antes de iniciar los ensayos del proyecto, el estudiante diseña el concepto narrativo y visual de su obra dancística: su sinopsis, tipo de coreografía, música y simbología."
+        },
+        materiales: [
+          "Hoja de trabajo «Dossier Coreográfico: Tipos de Coreografía, Simbología y Sinopsis» (para portafolio)",
+          "Bocina con pistas instrumentales y bandas sonoras de distintos estilos",
+          "Crayones, marcadores y lápiz"
+        ],
+        momentos: [
+          {
+            nombre: "1. Introducción motivante y explicación del tema",
+            tiempo: 16,
+            actividades: [
+              "<strong>Explicación Visual «Arquitectura de una Obra Dancística Temática»:</strong> La docente explica cómo estructurar una coreografía basada en un libro o temática creativa: 1) <em>Tipos de coreografía</em> (unísono, canon, simétrica, asimétrica, solista/protagonista y grupal/coro); 2) <em>Espacio, ritmo y estilo</em> (contemporáneo, moderno, teatral-expresivo o fusión); 3) <em>Simbología del vestuario y escenografía</em> (cómo un color, una capa, un libro o un pañuelo simbolizan personajes o ideas); y 4) <em>La sinopsis dancística</em> (resumen claro que orienta al público antes de iniciar la obra)."
+            ]
+          },
+          {
+            nombre: "2. Trabajo individual",
+            tiempo: 22,
+            actividades: [
+              "<strong>Dossier Coreográfico en Aula (Portafolio):</strong> Cada estudiante completa su hoja impresa dividida en tres secciones: a) Esquema de 4 tipos de coreografía aplicados a una historia; b) Diseño ilustrado de vestuario y escenografía explicando la simbología de colores y objetos; y c) Redacción de una sinopsis de 5 líneas para una obra dancística basada en un libro o temática libre."
+            ]
+          },
+          {
+            nombre: "3. Trabajo grupal",
+            tiempo: 18,
+            actividades: [
+              "<strong>«Laboratorio de Tipos de Coreografía Narrativa» (Equipos de 5):</strong> Cada equipo toma una secuencia base de 8 tiempos y la ejecuta aplicando tres estructuras coreográficas: 8 tiempos al <em>unísono</em> (fuerza colectiva), 8 tiempos en <em>canon</em> (efecto dominó o eco narrativo) y 8 tiempos en <em>formación asimétrica</em> (protagonista frente al grupo)."
+            ]
+          },
+          {
+            nombre: "4. Plenaria y actividad sugerida",
+            tiempo: 14,
+            actividades: [
+              "<strong>Demostración Práctica y Revisión de Dossier (Proyecto 1 y 2):</strong> Cada equipo ejecuta su secuencia mostrando los tipos de coreografía y lee en voz alta una sinopsis destacada del grupo.",
+              "<strong>Actividad Sugerida — «Cuadro Vivo de Portada»:</strong> Cada equipo elige un objeto simbólico cotidiano (un libro, un reloj, una bufanda o un sombrero) y diseña la imagen inicial congelada de su obra como si fuera la portada de un libro."
+            ]
+          }
+        ],
+        evaluacion: [
+          { proyecto: "Proyecto 1 — Aplicación Práctica (8 pts)", detalle: "Ejecución práctica de tipos de coreografía (unísono, canon, asimétrica) integrando espacio, ritmo y estilo." },
+          { proyecto: "Proyecto 2 — Portafolio Físico (8 pts)", detalle: "Dossier «Tipos de Coreografía, Simbología y Sinopsis de la Obra Dancística» archivado en el portafolio." }
+        ]
+      },
+      {
+        area: "Danza",
+        clase: 3,
+        fase: "Ensayo",
+        tema: "Ensayo 1: Asignación oficial de la canción y danza por la docente y montaje inicial con la sección completa",
+        competencia: COMP_BASICO3_DANZA_1,
+        indicador: IND_BASICO3_DANZA_3,
+        contenido: "Ensayo 1: Presentación y organización de la propuesta dancística asignada por la docente. Definición del estilo, temática, canción oficial y montaje inicial con toda la sección.",
+        habilidadesBlandas: [
+          "Cohesión grupal e integración de toda la sección como un solo elenco",
+          "Escucha musical y comprensión del mensaje de la danza asignada",
+          "Disciplina, atención y compromiso colectivo"
+        ],
+        habitoCovey: {
+          titulo: "Hábito 2: Comenzar con un Fin en Mente",
+          explicacion: "Comprender desde el primer ensayo la visión artística de la canción y danza asignadas por la docente para trabajar unidos como sección completa hacia una presentación impecable."
+        },
+        materiales: [
+          "Bocina con la canción oficial asignada por la docente para la sección",
+          "Ficha de montaje coreográfico de la sección (título de la danza, canción asignada, sinopsis oficial y ubicación en el espacio)",
+          "Rúbrica impresa de Ensayo 1 (para portafolio)"
+        ],
+        momentos: [
+          {
+            nombre: "1. Introducción motivante y explicación del tema",
+            tiempo: 14,
+            actividades: [
+              "<strong>Calentamiento Articular y Presentación de la Canción y Danza Oficiales:</strong> Activación física completa (cuello, hombros, torso, caderas y pies). A continuación, la docente da a conocer oficialmente la <strong>canción</strong> y la <strong>danza/temática</strong> que ella asigna a toda la sección, reproduce la pista completa para analizar su ritmo e intensidad, y explica el estilo, la sinopsis y el carácter expresivo de la obra."
+            ]
+          },
+          {
+            nombre: "2. Trabajo individual",
+            tiempo: 12,
+            actividades: [
+              "<strong>Registro de la Canción, Estilo y Estructura Musical:</strong> Cada estudiante anota en su cuaderno el nombre de la canción asignada por la docente, la temática o historia de la danza, los tiempos musicales principales y su ubicación asignada dentro de la sección."
+            ]
+          },
+          {
+            nombre: "3. Trabajo grupal",
+            tiempo: 30,
+            actividades: [
+              "<strong>Montaje Colectivo de Apertura con la Sección Completa (Ensayo 1):</strong> Trabajando con <strong>toda la sección unida</strong> (sin dividir en grupos), ubican su formación inicial en el salón y montan los primeros 16 a 32 tiempos de entrada siguiendo las indicaciones y conteo de la docente con la canción oficial."
+            ]
+          },
+          {
+            nombre: "4. Plenaria y actividad sugerida",
+            tiempo: 14,
+            actividades: [
+              "<strong>Pasada Evaluada de Apertura de la Sección Completa:</strong> Toda la sección ejecuta su formación inicial y los primeros tiempos con la canción asignada mientras la docente califica Ensayo 1.",
+              "<strong>Actividad Sugerida — «Mapa Musical de Emociones»:</strong> Escuchar la canción asignada marcando con palmadas las frases de 8 tiempos e identificando dónde inicia la introducción, dónde sube la intensidad (clímax) y dónde cierra la pieza."
+            ]
+          }
+        ],
+        evaluacion: [
+          { proyecto: "Proyecto 3 — Proceso de Ensayos (Ensayo 1: 4 pts)", detalle: "Rúbrica de ensayo: integra la canción y danza asignadas por la docente, mantiene su ubicación en la sección completa y ejecuta la secuencia inicial." }
+        ]
+      },
+      {
+        area: "Danza",
+        clase: 4,
+        fase: "Ensayo",
+        tema: "Ensayo 2: Exploración e improvisación de personajes, atmósferas y secuencias narrativas de la sección",
+        competencia: COMP_BASICO3_DANZA_1,
+        indicador: IND_BASICO3_DANZA_4,
+        contenido: "Ensayo 2: Exploración e improvisación de movimientos. Creación y ensamble de secuencias de acuerdo con la temática, canción y estilo asignados a la sección.",
+        habilidadesBlandas: [
+          "Expresividad gestual e interpretación de personajes sin palabras",
+          "Creatividad compartida y síntesis coreográfica de aula",
+          "Escucha activa y sincronización con toda la sección"
+        ],
+        habitoCovey: {
+          titulo: "Hábito 6: Sinergizar",
+          explicacion: "Integrar las propuestas de movimiento nacidas de la improvisación de los estudiantes junto con el montaje guiado para dar vida a la historia o temática de toda la sección."
+        },
+        materiales: [
+          "Bocina con la canción oficial asignada por la docente",
+          "Rúbrica impresa de Ensayo 2 (para portafolio)"
+        ],
+        momentos: [
+          {
+            nombre: "1. Introducción motivante y explicación del tema",
+            tiempo: 12,
+            actividades: [
+              "<strong>Calentamiento «Gestos y Calidades de Movimiento Narrativo»:</strong> Exploración corporal de movimientos expansivos, recogidos, suspensivos y enérgicos para representar los personajes o atmósferas de la danza asignada."
+            ]
+          },
+          {
+            nombre: "2. Trabajo individual",
+            tiempo: 14,
+            actividades: [
+              "<strong>Exploración Personal de Motivo Coreográfico (8 Tiempos):</strong> Cada estudiante improvisa y propone una frase original de 8 tiempos acorde a la canción y temática asignada por la docente."
+            ]
+          },
+          {
+            nombre: "3. Trabajo grupal",
+            tiempo: 29,
+            actividades: [
+              "<strong>Ensamble de Secuencias Narrativas de la Sección Completa (Ensayo 2):</strong> Con toda la sección integrada, seleccionan los mejores motivos propuestos, los enlazan con la coreografía guiada por la docente hasta completar 48 tiempos continuos y ensayan al ritmo de la canción oficial."
+            ]
+          },
+          {
+            nombre: "4. Plenaria y actividad sugerida",
+            tiempo: 15,
+            actividades: [
+              "<strong>Muestra de Secuencias de la Sección:</strong> La sección completa ejecuta las secuencias montadas con música mientras la docente califica Ensayo 2.",
+              "<strong>Actividad Sugerida — «Fotograma Narrativo en Pausa»:</strong> Detener la música en tres momentos aleatorios durante el ensayo para verificar que el gesto facial y la postura corporal de toda la sección comuniquen claramente la historia."
+            ]
+          }
+        ],
+        evaluacion: [
+          { proyecto: "Proyecto 3 — Proceso de Ensayos (Ensayo 2: 4 pts)", detalle: "Rúbrica de ensayo: explora e improvisa movimientos y ensambla secuencias coherentes con la temática, canción y estilo de la sección." }
+        ]
+      },
+      {
+        area: "Danza",
+        clase: 5,
+        fase: "Ensayo",
+        tema: "Ensayo 3: Organización narrativa de la coreografía de la sección (inicio, nudo y desenlace), desplazamientos y ritmo",
+        competencia: COMP_BASICO3_DANZA_1,
+        indicador: IND_BASICO3_DANZA_2,
+        contenido: "Ensayo 3: Organización de la coreografía, distribución de movimientos, desplazamientos, ritmo y expresión corporal de la sección completa.",
+        habilidadesBlandas: [
+          "Estructura narrativa y visión espacial de conjunto",
+          "Expresividad facial y corporal intencionada",
+          "Disciplina y fluidez en las transiciones escénicas"
+        ],
+        habitoCovey: {
+          titulo: "Hábito 3: Poner Primero lo Primero",
+          explicacion: "Ordenar primero la secuencia narrativa de toda la sección (inicio, conflicto/clímax y resolución), los desplazamientos y el conteo rítmico antes de añadir accesorios."
+        },
+        materiales: [
+          "Hoja «Guion Espacial y Mapa de Escenas Coreográficas» (para portafolio)",
+          "Bocina con la canción oficial y cinta adhesiva para ejes escénicos",
+          "Rúbrica impresa de Ensayo 3"
+        ],
+        momentos: [
+          {
+            nombre: "1. Introducción motivante y explicación del tema",
+            tiempo: 12,
+            actividades: [
+              "<strong>Calentamiento Espacial y Expresivo:</strong> Ejercicios de proyección de mirada, niveles escénicos y desplazamientos fluidos en diagonales, líneas y círculos manteniendo las distancias entre compañeros."
+            ]
+          },
+          {
+            nombre: "2. Trabajo individual",
+            tiempo: 14,
+            actividades: [
+              "<strong>Guion Espacial Personal (Portafolio):</strong> Cada estudiante dibuja en su hoja impresa las tres escenas coreográficas de la sección (Inicio, Nudo/Clímax y Desenlace) marcando su ubicación exacta y sus trayectorias de desplazamiento."
+            ]
+          },
+          {
+            nombre: "3. Trabajo grupal",
+            tiempo: 29,
+            actividades: [
+              "<strong>Montaje de Transiciones y Tipos de Coreografía de la Sección (Ensayo 3):</strong> Toda la sección organiza las transiciones bailadas entre el inicio, nudo y desenlace, combinando unísono, canon por filas y formaciones simétricas/asimétricas con expresión corporal."
+            ]
+          },
+          {
+            nombre: "4. Plenaria y actividad sugerida",
+            tiempo: 15,
+            actividades: [
+              "<strong>Pasada Evaluada de Estructura y Ritmo:</strong> La sección completa muestra su coreografía organizada mientras la docente califica Ensayo 3 y revisa los mapas espaciales.",
+              "<strong>Actividad Sugerida — «Ensayo Sin Música (Conteo y Respiración Grupal)»:</strong> Ejecutar las transiciones entre formaciones contando en voz baja toda la sección para asegurar precisión rítmica y limpieza espacial."
+            ]
+          }
+        ],
+        evaluacion: [
+          { proyecto: "Proyecto 3 — Proceso de Ensayos (Ensayo 3: 4 pts)", detalle: "Rúbrica de ensayo: organiza la estructura narrativa de la coreografía, desplazamientos, ritmo y expresión corporal dentro de la sección." },
+          { proyecto: "Proyecto 2 — Portafolio Físico (4 pts)", detalle: "Guion Espacial y Mapa de Escenas Coreográficas archivado en el portafolio." }
+        ]
+      },
+      {
+        area: "Danza",
+        clase: 6,
+        fase: "Ensayo",
+        tema: "Ensayo 4: Práctica de la coreografía completa de la sección, coordinación grupal y ajustes de espacio y estilo",
+        competencia: COMP_BASICO3_DANZA_1,
+        indicador: IND_BASICO3_DANZA_2,
+        contenido: "Ensayo 4: Práctica de la coreografía completa de la sección. Coordinación grupal, conexión entre movimientos y ajustes de espacio y estilo.",
+        habilidadesBlandas: [
+          "Sincronización colectiva y conciencia espacial periférica",
+          "Perseverancia y mejora continua",
+          "Cohesión interpretativa entre toda la sección"
+        ],
+        habitoCovey: {
+          titulo: "Hábito 1: Ser Proactivo",
+          explicacion: "Cada integrante detecta y corrige sus propios detalles de coordinación, amplitud de movimiento e intención expresiva para fortalecer la narración de toda la sección."
+        },
+        materiales: [
+          "Bocina con la canción oficial asignada por la docente",
+          "Rúbrica impresa de Ensayo 4 (para portafolio)"
+        ],
+        momentos: [
+          {
+            nombre: "1. Introducción motivante y explicación del tema",
+            tiempo: 12,
+            actividades: [
+              "<strong>Calentamiento de Resistencia y Precisión Rítmica:</strong> Secuencia dinámica de activación cardiovascular suave y marcación de acentos y pausas dramáticas de la canción oficial."
+            ]
+          },
+          {
+            nombre: "2. Trabajo individual",
+            tiempo: 13,
+            actividades: [
+              "<strong>Pulido de Enlaces e Intención Gestual:</strong> Cada estudiante practica 5 veces la transición más exigente de su trayectoria cuidando postura, manos y mirada."
+            ]
+          },
+          {
+            nombre: "3. Trabajo grupal",
+            tiempo: 30,
+            actividades: [
+              "<strong>Ensayo de Coreografía Completa de la Sección (Ensayo 4):</strong> Toda la sección realiza dos pasadas completas de principio a fin trabajando la fluidez entre bloques narrativos, la sincronización al unísono/canon y el ajuste de líneas y distancias en el escenario."
+            ]
+          },
+          {
+            nombre: "4. Plenaria y actividad sugerida",
+            tiempo: 15,
+            actividades: [
+              "<strong>Evaluación de Corrida Completa:</strong> La docente evalúa coordinación grupal, conexión entre movimientos y estilo (Ensayo 4) y señala ajustes técnicos específicos para la sección.",
+              "<strong>Actividad Sugerida — «Enfoque en Intención y Mirada»:</strong> Repasar el bloque central prestando atención exclusiva a la alineación de líneas y la proyección expresiva hacia el público."
+            ]
+          }
+        ],
+        evaluacion: [
+          { proyecto: "Proyecto 3 — Proceso de Ensayos (Ensayo 4: 4 pts)", detalle: "Rúbrica de ensayo: ejecuta la coreografía completa con coordinación grupal, conexión entre movimientos y ajustes de espacio/estilo." }
+        ]
+      },
+      {
+        area: "Danza",
+        clase: 7,
+        fase: "Ensayo",
+        tema: "Ensayo 5: Presentación de avances por filas/bloques en aula y retroalimentación mediante crítica constructiva",
+        competencia: COMP_BASICO3_DANZA_2,
+        indicador: IND_BASICO3_DANZA_5,
+        contenido: "Ensayo 5: Presentación de avances de la propuesta dancística de la sección en el aula. Observación, evaluación y retroalimentación constructiva para mejorar la ejecución grupal.",
+        habilidadesBlandas: [
+          "Empatía y comunicación asertiva en la crítica constructiva",
+          "Receptividad y humildad para aceptar sugerencias de mejora",
+          "Pensamiento analítico y criterio artístico"
+        ],
+        habitoCovey: {
+          titulo: "Hábito 5: Buscar Primero Entender, Luego Ser Entendido",
+          explicacion: "Observar con atención la ejecución de los compañeros de sección antes de emitir una crítica constructiva fundamentada en criterios artísticos."
+        },
+        materiales: [
+          "Hoja de trabajo «Ficha de Evaluación entre Pares y Crítica Constructiva» (para portafolio)",
+          "Bocina con la canción oficial asignada",
+          "Rúbrica impresa de Ensayo 5"
+        ],
+        momentos: [
+          {
+            nombre: "1. Introducción motivante y explicación del tema",
+            tiempo: 12,
+            actividades: [
+              "<strong>Protocolo «Crítica Constructiva en el Arte»:</strong> La docente explica la regla del <em>Sándwich Artístico Constructivo</em>: 1) Destacar un acierto técnico o narrativo concreto (ej. claridad de la historia, sincronización o uso del espacio), 2) Proponer una mejora específica y respetuosa, y 3) Cerrar valorando la expresión o energía."
+            ]
+          },
+          {
+            nombre: "2. Trabajo individual",
+            tiempo: 15,
+            actividades: [
+              "<strong>Preparación y Observación Analítica (Portafolio):</strong> Cada estudiante prepara su ficha impresa de observación con 4 indicadores (claridad de la temática/danza asignada, ritmo y coordinación, uso del espacio/formaciones y expresión corporal) para observar la ejecución de sus compañeros de sección."
+            ]
+          },
+          {
+            nombre: "3. Trabajo grupal",
+            tiempo: 28,
+            actividades: [
+              "<strong>Muestra de Avances por Mitades de Sección y Retroalimentación (Ensayo 5):</strong> La sección se divide temporalmente en Mitad A y Mitad B únicamente para observarse mutuamente mientras ejecutan la coreografía oficial completa; tras cada pasada, los observadores comparten su crítica constructiva y luego toda la sección junta aplica las mejoras."
+            ]
+          },
+          {
+            nombre: "4. Plenaria y actividad sugerida",
+            tiempo: 15,
+            actividades: [
+              "<strong>Síntesis de Mejoras y Archivo de Ficha (Proyecto 1, 2 y 3):</strong> La docente califica tanto el avance coreográfico (Ensayo 5) como la calidad de la crítica constructiva emitida (Proyecto 1), y los estudiantes archivan su ficha en el portafolio.",
+              "<strong>Actividad Sugerida — «Compromiso de Mejora en 3 Puntos»:</strong> La sección acuerda en el pizarrón los 3 ajustes concretos de sincronización y expresión que aplicará en el ensayo general."
+            ]
+          }
+        ],
+        evaluacion: [
+          { proyecto: "Proyecto 1 — Aplicación Práctica (Cierre: 8 pts)", detalle: "Emite crítica constructiva respetuosa y fundamentada para retroalimentar el trabajo dancístico de sus compañeros de sección (completa 25 pts)." },
+          { proyecto: "Proyecto 2 — Portafolio Físico (3 pts) y Proyecto 3 — Ensayo 5 (4 pts)", detalle: "Ficha de Crítica Constructiva archivada en el portafolio + rúbrica de presentación de avances en aula." }
+        ]
+      },
+      {
+        area: "Danza",
+        clase: 8,
+        fase: "Ensayo",
+        tema: "Ensayo 6: Ensayo general de la sección completa con música, vestuario simbólico y recursos escénicos",
+        competencia: COMP_BASICO3_DANZA_1,
+        indicador: IND_BASICO3_DANZA_2,
+        contenido: "Ensayo 6: Ensayo general de la sección completa con música, vestuario y recursos escénicos. Corrección de detalles y preparación final de la presentación.",
+        habilidadesBlandas: [
+          "Temple escénico y seguridad interpretativa",
+          "Responsabilidad con vestuario simbólico, utilería y recursos escénicos",
+          "Orgullo por la creación artística de toda la sección"
+        ],
+        habitoCovey: {
+          titulo: "Hábito 7: Afilar la Sierra",
+          explicacion: "Realizar un ensayo general pulido de toda la sección integrando música, vestuario simbólico, sinopsis y recursos escénicos para llegar preparados a la presentación final."
+        },
+        materiales: [
+          "Vestuario simbólico, utilería y recursos escénicos acordados para la sección",
+          "Sinopsis impresa de la obra dancística de la sección para presentación",
+          "Bocina con la canción oficial y rúbrica final de Ensayo 6"
+        ],
+        momentos: [
+          {
+            nombre: "1. Introducción motivante y explicación del tema",
+            tiempo: 12,
+            actividades: [
+              "<strong>Calentamiento Integral y Revisión de Protocolo Escénico:</strong> Movilidad articular completa y repaso del protocolo de presentación de la sección (lectura de sinopsis, entrada escénica, ejecución de la obra dancística, pose final y venia conjunta)."
+            ]
+          },
+          {
+            nombre: "2. Trabajo individual",
+            tiempo: 13,
+            actividades: [
+              "<strong>Verificación de Vestuario Simbólico y Portafolio Completo:</strong> Cada estudiante verifica la sujeción cómoda de su vestuario/elementos simbólicos y entrega su portafolio físico completo de Danza para revisión final."
+            ]
+          },
+          {
+            nombre: "3. Trabajo grupal",
+            tiempo: 30,
+            actividades: [
+              "<strong>Ensayo General Completo de la Sección con Vestuario y Recursos (Ensayo 6):</strong> Toda la sección ejecuta la obra dancística íntegra con lectura previa de sinopsis, vestuario simbólico, utilería/recursos escénicos y la canción oficial sin interrupciones."
+            ]
+          },
+          {
+            nombre: "4. Plenaria y actividad sugerida",
+            tiempo: 15,
+            actividades: [
+              "<strong>Cierre de Ensayos y Portafolio (Proyecto 2 y 3):</strong> Cierre de calificación de Ensayos (completa 25 pts) y Portafolio de Danza (completa 25 pts), y recordatorio de fecha de la Presentación Final (fuera de las 8 clases).",
+              "<strong>Actividad Sugerida — «Protocolo de Resolución Silenciosa en Escena»:</strong> Practicar en 2 minutos cómo resolver con naturalidad y sin salir del personaje/atmósfera cualquier imprevisto con un elemento simbólico o cambio de espacio."
+            ]
+          }
+        ],
+        evaluacion: [
+          { proyecto: "Proyecto 3 — Proceso de Ensayos (Ensayo 6: 5 pts) y Proyecto 2 — Portafolio (Cierre: 5 pts)", detalle: "Ensayo general de la sección completa con música, vestuario simbólico y recursos escénicos (completa 25 pts) + revisión final de folder completo (completa 25 pts)." },
+          { proyecto: "Proyecto 4 — Presentación Final (25 pts — Fecha posterior)", detalle: "Puesta en escena final de la obra dancística de la sección frente al público (evaluada en fecha posterior)." }
+        ]
+      }
+    ];
+
+    // ================= 8 PLANES DIARIOS DE TEATRO (TERCERO BÁSICO - 70 MIN - INTACTO) =================
+    const planesTeatro = [
+      {
+        area: "Teatro",
+        clase: 1,
+        fase: "Desarrollo",
+        tema: "Elementos de la dramaturgia (acción, conflicto, personaje, cronotipo) y estructura de la obra",
+        competencia: COMP_BASICO3_TEATRO_1,
+        indicador: IND_BASICO3_TEATRO_1,
+        contenido: "Elementos de la dramaturgia y estructura de la obra: Acción, conflicto, personaje y cronotipo (tiempo y espacio). Estructura de la obra: inicio, nudo y desenlace.",
+        habilidadesBlandas: [
+          "Pensamiento narrativo y análisis estructural",
+          "Creatividad en la construcción de conflictos dramáticos",
+          "Trabajo en equipo y argumentación"
+        ],
+        habitoCovey: {
+          titulo: "Hábito 2: Comenzar con un Fin en Mente",
+          explicacion: "Diseñar la arquitectura dramática completa (inicio, nudo y desenlace) definiendo claramente qué quiere el personaje y qué conflicto enfrenta antes de redactar diálogos."
+        },
+        materiales: [
+          "Hoja de trabajo «Arquitectura Dramatúrgica: Acción, Conflicto, Personaje y Cronotipo» (para portafolio)",
+          "Tarjetas de cronotipos (época, hora del día y lugar específico)",
+          "Lápiz y lapiceros"
+        ],
+        momentos: [
+          {
+            nombre: "1. Introducción motivante y explicación del tema",
+            tiempo: 16,
+            actividades: [
+              "<strong>Explicación Visual «Los 4 Pilares de la Dramaturgia»:</strong> La docente explica qué convierte una simple conversación en teatro: 1) <em>Personaje</em> (quién actúa con un objetivo), 2) <em>Conflicto</em> (el choque de fuerzas u obstáculo que impide lograr el objetivo), 3) <em>Acción dramática</em> (lo que hacen los personajes para resolver el conflicto) y 4) <em>Cronotipo</em> (la unidad inseparable de <strong>tiempo y espacio</strong> donde ocurre la historia), organizados en la <em>estructura clásica</em>: <strong>Inicio</strong> (presentación), <strong>Nudo</strong> (clímax del conflicto) y <strong>Desenlace</strong> (resolución)."
+            ]
+          },
+          {
+            nombre: "2. Trabajo individual",
+            tiempo: 20,
+            actividades: [
+              "<strong>Hoja de Trabajo «Arquitectura Dramatúrgica» (Portafolio):</strong> Cada estudiante analiza una micro-historia y luego diseña una premisa teatral propia definiendo por escrito: personajes (protagonista y antagonista/obstáculo), conflicto central, cronotipo (tiempo y lugar exacto) y esquema de inicio, nudo y desenlace."
+            ]
+          },
+          {
+            nombre: "3. Trabajo grupal",
+            tiempo: 19,
+            actividades: [
+              "<strong>«De la Escaleta al Escenario en 3 Momentos» (Equipos de 4):</strong> Cada equipo elige una premisa de sus integrantes y monta una escena de 90 segundos dividida claramente en tres fotografías escénicas conectadas por acción: Inicio, Nudo (con conflicto visible) y Desenlace."
+            ]
+          },
+          {
+            nombre: "4. Plenaria y actividad sugerida",
+            tiempo: 15,
+            actividades: [
+              "<strong>Muestra Dramatúrgica Evaluada (Proyecto 1 y 2):</strong> Cada equipo presenta su escena; los espectadores identifican el cronotipo, el conflicto y el desenlace mientras la docente califica con rúbrica y revisa la hoja del portafolio.",
+              "<strong>Actividad Sugerida — «Cambio de Cronotipo Relámpago»:</strong> Repetir una frase de conflicto de 2 líneas cambiando el cronotipo (ej. primero en una biblioteca en silencio absoluto y luego en una estación de tren a punto de partir)."
+            ]
+          }
+        ],
+        evaluacion: [
+          { proyecto: "Proyecto 1 — Aplicación Práctica (8 pts)", detalle: "Rúbrica práctica: escenifica una historia aplicando acción, conflicto, personaje, cronotipo y estructura (inicio, nudo y desenlace)." },
+          { proyecto: "Proyecto 2 — Portafolio Físico (5 pts)", detalle: "Hoja «Arquitectura Dramatúrgica: Acción, Conflicto, Personaje y Cronotipo» archivada en el portafolio." }
+        ]
+      },
+      {
+        area: "Teatro",
+        clase: 2,
+        fase: "Desarrollo",
+        tema: "Estructura teatral (cuadros, escenas, actos) y formas de expresión dramática (monólogo, soliloquio, diálogo)",
+        competencia: COMP_BASICO3_TEATRO_1,
+        indicador: IND_BASICO3_TEATRO_2,
+        contenido: "Estructura teatral y formas de expresión dramática: Cuadros, escenas y actos. Formas de expresión dramática: monólogo o unipersonal, soliloquio y diálogo.",
+        habilidadesBlandas: [
+          "Expresividad verbal y profundidad introspectiva",
+          "Escucha activa y réplica ágil en el diálogo",
+          "Precisión conceptual y redacción teatral"
+        ],
+        habitoCovey: {
+          titulo: "Hábito 5: Buscar Primero Entender, Luego Ser Entendido",
+          explicacion: "Diferenciar cuándo un personaje dialoga escuchando al otro, cuándo dirige un monólogo al público y cuándo reflexiona en voz alta consigo mismo en un soliloquio."
+        },
+        materiales: [
+          "Hoja de trabajo «Estructura Teatral y Formas de Expresión Dramática» (para portafolio)",
+          "Tarjetas con 3 fragmentos dramáticos modelo (Monólogo, Soliloquio y Diálogo)"
+        ],
+        momentos: [
+          {
+            nombre: "1. Introducción motivante y explicación del tema",
+            tiempo: 16,
+            actividades: [
+              "<strong>Demostración Actoral de las Formas Dramáticas:</strong> La docente explica la división externa de un texto teatral: <em>Acto</em> (división mayor marcada por caída de telón o cambio principal), <em>Cuadro</em> (cambio de ambiente o escenografía) y <em>Escena</em> (marcada por la entrada o salida de un personaje). Luego ejemplifica en vivo las tres formas de expresión: 1) <em>Diálogo</em> (conversación entre dos o más personajes), 2) <em>Monólogo o unipersonal</em> (un personaje habla dirigiéndose a un interlocutor o al público) y 3) <em>Soliloquio</em> (el personaje habla solo en escena reflexionando en voz alta sobre sus pensamientos íntimos sin dirigirse a nadie más)."
+            ]
+          },
+          {
+            nombre: "2. Trabajo individual",
+            tiempo: 20,
+            actividades: [
+              "<strong>Hoja de Trabajo «Estructura Teatral y Formas Dramática» (Portafolio):</strong> Cada estudiante clasifica ejemplos de actos, cuadros y escenas, y redacta a partir de una experiencia personal un texto breve de 8 líneas que incluya una acotación de escena y el paso de un <em>soliloquio</em> a un <em>monólogo</em>."
+            ]
+          },
+          {
+            nombre: "3. Trabajo grupal",
+            tiempo: 19,
+            actividades: [
+              "<strong>«Tríptico Escénico en Tres Formas» (Tríos):</strong> Cada trío crea un cuadro dramático de 2 minutos sobre una decisión escolar o familiar estructurado en tres momentos: Escena 1 (<em>Diálogo</em> entre dos personajes), Escena 2 (sale uno y el otro realiza un <em>Soliloquio</em> dudando qué hacer) y Escena 3 (<em>Monólogo</em> final explicando su decisión)."
+            ]
+          },
+          {
+            nombre: "4. Plenaria y actividad sugerida",
+            tiempo: 15,
+            actividades: [
+              "<strong>Muestra de Formas Dramáticas (Proyecto 1 y 2):</strong> Cada trío actúa su cuadro teatral; los compañeros señalan en qué momento ocurrió el cambio de escena y distinguen el soliloquio del monólogo.",
+              "<strong>Actividad Sugerida — «El Pensamiento en Voz Alta (Soliloquio Exprés)»:</strong> Un estudiante realiza una acción cotidiana en el centro (ej. revisar una mochila antes de un viaje) mientras expresa en soliloquio sus dudas y emociones sin mirar al público."
+            ]
+          }
+        ],
+        evaluacion: [
+          { proyecto: "Proyecto 1 — Aplicación Práctica (8 pts)", detalle: "Representación práctica diferenciando cuadros, escenas, diálogo, soliloquio y monólogo a partir de experiencias de vida." },
+          { proyecto: "Proyecto 2 — Portafolio Físico (5 pts)", detalle: "Hoja «Estructura Teatral y Formas de Expresión Dramática» resuelta y archivada en el portafolio." }
+        ]
+      },
+      {
+        area: "Teatro",
+        clase: 3,
+        fase: "Desarrollo",
+        tema: "Proceso para el montaje teatral: producción, dramaturgia colectiva (Método de Cali) e interpretación vocal",
+        competencia: COMP_BASICO3_TEATRO_2,
+        indicador: IND_BASICO3_TEATRO_3,
+        contenido: "Proceso para el montaje de una obra teatral: Selección de actores y elementos de producción. Dramaturgia colectiva, método de creación colectiva o método de Cali, improvisación grupal de escenas e interpretación y experimentación del texto teatral.",
+        habilidadesBlandas: [
+          "Co-creación horizontal y liderazgo colectivo",
+          "Improvisación teatral y escucha grupal",
+          "Expresividad y manejo técnico de la voz"
+        ],
+        habitoCovey: {
+          titulo: "Hábito 6: Sinergizar",
+          explicacion: "Aplicar el Método de Creación Colectiva (Método de Cali de Enrique Buenaventura), donde todo el grupo propone ideas, improvisa escenas y construye conjuntamente el texto y el montaje."
+        },
+        materiales: [
+          "Hoja de trabajo «Fases del Montaje Teatral y Método de Creación Colectiva (Método de Cali)» (para portafolio)",
+          "Tarjetas con temas sociales o juveniles detonantes para improvisación colectiva"
+        ],
+        momentos: [
+          {
+            nombre: "1. Introducción motivante y explicación del tema",
+            tiempo: 16,
+            actividades: [
+              "<strong>Explicación «Del Papel al Escenario: El Método de Cali»:</strong> La docente explica las etapas del montaje teatral (selección de elenco, diseño de producción: escenografía, utilería, vestuario y sonido) y presenta el <em>Método de Creación Colectiva o Método de Cali</em> (impulsado en Latinoamérica por Enrique Buenaventura): 1) Selección colectiva del tema, 2) Investigación y discusión grupal, 3) Improvisación grupal de escenas, 4) Escritura/fijación del texto teatral a partir de las improvisaciones, y 5) Experimentación vocal y montaje."
+            ]
+          },
+          {
+            nombre: "2. Trabajo individual",
+            tiempo: 18,
+            actividades: [
+              "<strong>Hoja de Trabajo «Montaje Teatral y Método de Cali» (Portafolio):</strong> Cada estudiante ordena las 5 fases del Método de Creación Colectiva, relaciona los elementos de producción con su función y anota 3 técnicas vocales (respiración, articulación e intención) para experimentar con un texto."
+            ]
+          },
+          {
+            nombre: "3. Trabajo grupal",
+            tiempo: 21,
+            actividades: [
+              "<strong>«Laboratorio de Creación Colectiva Exprés» (Equipos de 5):</strong> Aplicando el Método de Cali, cada equipo recibe un tema detonante (ej. <em>el rumor en redes, la presión de grupo o el cuidado de la comunidad</em>), improvisa una escena de 90 segundos sin guion previo, fija 4 líneas clave de diálogo y experimenta interpretándolas con distintas intenciones vocales."
+            ]
+          },
+          {
+            nombre: "4. Plenaria y actividad sugerida",
+            tiempo: 15,
+            actividades: [
+              "<strong>Muestra de Creación Colectiva y Voz (Cierre Proyecto 1):</strong> Cada equipo presenta su escena creada colectivamente mientras la docente evalúa coordinación grupal, improvisación e interpretación vocal (completa los 25 pts del Proyecto 1).",
+              "<strong>Actividad Sugerida — «Orquesta Vocal de Intenciones»:</strong> Todo el salón dice una misma línea teatral experimentando 4 matices vocales guiados por la docente: susurro tenso, proyección firme, duda entrecortada y convicción inspiradora."
+            ]
+          }
+        ],
+        evaluacion: [
+          { proyecto: "Proyecto 1 — Aplicación Práctica (Cierre: 9 pts)", detalle: "Taller práctico de Creación Colectiva (Método de Cali), improvisación grupal e interpretación vocal del texto teatral (completa 25 pts)." },
+          { proyecto: "Proyecto 2 — Portafolio Físico (5 pts)", detalle: "Hoja «Fases del Montaje Teatral y Método de Creación Colectiva (Método de Cali)» archivada en el portafolio." }
+        ]
+      },
+      {
+        area: "Teatro",
+        clase: 4,
+        fase: "Ensayo",
+        tema: "Ensayo 1: Selección de obra o creación de propuesta teatral (tema, conflicto, personajes y estructura)",
+        competencia: COMP_BASICO3_TEATRO_1,
+        indicador: IND_BASICO3_TEATRO_1,
+        contenido: "Ensayo 1: Selección de la obra o creación de una propuesta teatral. Definición del tema, conflicto, personajes y estructura de la historia.",
+        habilidadesBlandas: [
+          "Consenso creativo y organización grupal",
+          "Síntesis argumental y claridad dramática",
+          "Responsabilidad compartida"
+        ],
+        habitoCovey: {
+          titulo: "Hábito 2: Comenzar con un Fin en Mente",
+          explicacion: "Establecer desde el primer ensayo la columna vertebral de la obra (tema, conflicto central, cronotipo, personajes y estructura en actos/cuadros)."
+        },
+        materiales: [
+          "Formato de propuesta teatral y escaleta (para portafolio)",
+          "Rúbrica impresa de Ensayo 1"
+        ],
+        momentos: [
+          {
+            nombre: "1. Introducción motivante y explicación del tema",
+            tiempo: 12,
+            actividades: [
+              "<strong>Activación Dramatúrgica «La Semilla del Conflicto»:</strong> Repaso rápido de los requisitos del proyecto teatral de unidad (duración de 4 a 6 minutos, conflicto claro, participación activa de todos los integrantes y cronotipo definido)."
+            ]
+          },
+          {
+            nombre: "2. Trabajo individual",
+            tiempo: 14,
+            actividades: [
+              "<strong>Propuesta Individual de Tema y Personajes:</strong> Cada estudiante redacta en 5 líneas una idea de obra original o adaptación de autor latinoamericano indicando tema, conflicto y personajes."
+            ]
+          },
+          {
+            nombre: "3. Trabajo grupal",
+            tiempo: 29,
+            actividades: [
+              "<strong>Conformación de Compañías y Definición de Estructura (Ensayo 1):</strong> En equipos de 5 a 6 integrantes, eligen la obra o propuesta de creación colectiva, definen el tema, conflicto, cronotipo, lista de personajes y la escaleta de inicio, nudo y desenlace."
+            ]
+          },
+          {
+            nombre: "4. Plenaria y actividad sugerida",
+            tiempo: 15,
+            actividades: [
+              "<strong>Presentación de Escaletas Teatrales:</strong> Cada equipo expone el título de su obra, su conflicto y sus personajes mientras la docente califica Ensayo 1.",
+              "<strong>Actividad Sugerida — «Tabla de Deseos y Obstáculos»:</strong> Cada equipo anota junto a cada personaje qué desea lograr en la obra y qué o quién se lo impide para asegurar tensión dramática."
+            ]
+          }
+        ],
+        evaluacion: [
+          { proyecto: "Proyecto 3 — Proceso de Ensayos (Ensayo 1: 5 pts)", detalle: "Rúbrica de ensayo: define tema, conflicto, personajes y estructura de la propuesta teatral." }
+        ]
+      },
+      {
+        area: "Teatro",
+        clase: 5,
+        fase: "Ensayo",
+        tema: "Ensayo 2: Elaboración y adaptación del guion teatral (diálogos, escenas y participación)",
+        competencia: COMP_BASICO3_TEATRO_1,
+        indicador: IND_BASICO3_TEATRO_4,
+        contenido: "Ensayo 2: Elaboración y adaptación del guion teatral. Organización de diálogos, escenas y participación de los personajes.",
+        habilidadesBlandas: [
+          "Redacción colaborativa y creatividad lingüística",
+          "Equidad en la participación escénica de todos",
+          "Escucha y negociación de ideas"
+        ],
+        habitoCovey: {
+          titulo: "Hábito 4: Pensar Ganar-Ganar",
+          explicacion: "Redactar y adaptar el guion garantizando que todos los personajes tengan intervenciones significativas y equilibradas dentro de la historia."
+        },
+        materiales: [
+          "Hojas para redacción del guion teatral (para portafolio)",
+          "Rúbrica impresa de Ensayo 2"
+        ],
+        momentos: [
+          {
+            nombre: "1. Introducción motivante y explicación del tema",
+            tiempo: 12,
+            actividades: [
+              "<strong>Modelo de Formato de Guion Teatral:</strong> La docente muestra en el pizarrón cómo escribir correctamente un libreto: encabezado de Acto/Cuadro/Escena, nombre del personaje en mayúsculas, acotaciones entre paréntesis (gestos, tono y movimiento) y diálogos ágiles."
+            ]
+          },
+          {
+            nombre: "2. Trabajo individual",
+            tiempo: 14,
+            actividades: [
+              "<strong>Redacción de Parlamentos Asignados:</strong> Cada estudiante redacta los diálogos y acotaciones de la escena o intervenciones que le corresponden dentro de su equipo."
+            ]
+          },
+          {
+            nombre: "3. Trabajo grupal",
+            tiempo: 29,
+            actividades: [
+              "<strong>Ensamblaje del Guion y Lectura de Mesa (Ensayo 2):</strong> Cada equipo une las escenas redactadas, verifica la continuidad entre inicio, nudo y desenlace, incorpora al menos un monólogo o soliloquio breve y realiza su primera lectura dramatizada en mesa."
+            ]
+          },
+          {
+            nombre: "4. Plenaria y actividad sugerida",
+            tiempo: 15,
+            actividades: [
+              "<strong>Lectura de Escena Clave y Revisión de Libreto (Proyecto 2 y 3):</strong> Cada equipo lee en voz alta una página de su guion; la docente evalúa Ensayo 2 y revisa el guion para el portafolio.",
+              "<strong>Actividad Sugerida — «Poda de Diálogos Largos»:</strong> Revisar que ninguna intervención sea excesivamente larga sin acción física, convirtiendo explicaciones en acciones escénicas."
+            ]
+          }
+        ],
+        evaluacion: [
+          { proyecto: "Proyecto 3 — Proceso de Ensayos (Ensayo 2: 5 pts)", detalle: "Rúbrica de ensayo: elabora o adapta el guion teatral organizando diálogos, escenas y participación." },
+          { proyecto: "Proyecto 2 — Portafolio Físico (5 pts)", detalle: "Guion teatral completo con actos, cuadros, escenas y acotaciones archivado en el portafolio." }
+        ]
+      },
+      {
+        area: "Teatro",
+        clase: 6,
+        fase: "Ensayo",
+        tema: "Ensayo 3: Distribución de personajes, dirección de actores y organización de movimientos, entradas y salidas",
+        competencia: COMP_BASICO3_TEATRO_2,
+        indicador: IND_BASICO3_TEATRO_5,
+        contenido: "Ensayo 3: Distribución de personajes, dirección de actores y organización de movimientos, entradas y salidas en el escenario.",
+        habilidadesBlandas: [
+          "Liderazgo en dirección escénica y receptividad actoral",
+          "Conciencia espacial y proyección hacia el público",
+          "Orden y disciplina en bastidores"
+        ],
+        habitoCovey: {
+          titulo: "Hábito 3: Poner Primero lo Primero",
+          explicacion: "Establecer primero el trazo escénico limpio (entradas, salidas, niveles y apertura hacia el público) antes de memorizar detalles finales."
+        },
+        materiales: [
+          "Libretos personales con margen para anotar trazo escénico",
+          "Cinta adhesiva para delimitar zonas del escenario y bastidores",
+          "Rúbrica impresa de Ensayo 3"
+        ],
+        momentos: [
+          {
+            nombre: "1. Introducción motivante y explicación del tema",
+            tiempo: 12,
+            actividades: [
+              "<strong>Dinámica «Las 9 Zonas del Escenario y Leyes del Trazo»:</strong> La docente explica cómo dividir el escenario (derecha, centro, izquierda; primer plano, centro y fondo) y tres reglas de dirección escénica: 1) Nunca dar la espalda completa al público al hablar, 2) Abrir el cuerpo en diagonal ('truco del triángulo'), y 3) Entrar y salir en personaje."
+            ]
+          },
+          {
+            nombre: "2. Trabajo individual",
+            tiempo: 13,
+            actividades: [
+              "<strong>Anotación de Trazo Escénico en Libreto:</strong> Cada actor marca en su libreto por qué lado entra, en qué zona del escenario se ubica en cada escena y por dónde sale."
+            ]
+          },
+          {
+            nombre: "3. Trabajo grupal",
+            tiempo: 30,
+            actividades: [
+              "<strong>Montaje en Pie y Dirección Escénica (Ensayo 3):</strong> Con apoyo de un coordinador de dirección rotativo o designado, cada equipo levanta la obra en pie marcando todos los desplazamientos, cruces, entradas y salidas de cada cuadro."
+            ]
+          },
+          {
+            nombre: "4. Plenaria y actividad sugerida",
+            tiempo: 15,
+            actividades: [
+              "<strong>Muestra de Trazo Escénico:</strong> Cada equipo presenta la transición entre dos escenas verificando entradas limpias y visibilidad de todos los actores (calificación Ensayo 3).",
+              "<strong>Actividad Sugerida — «Fotografía de Composición Escénica»:</strong> Detener la escena en el clímax y verificar que ningún actor tape a otro y que los niveles (de pie, sentado, inclinado) creen una imagen atractiva."
+            ]
+          }
+        ],
+        evaluacion: [
+          { proyecto: "Proyecto 3 — Proceso de Ensayos (Ensayo 3: 5 pts)", detalle: "Rúbrica de ensayo: distribuye personajes, aplica dirección de actores y organiza movimientos, entradas y salidas." }
+        ]
+      },
+      {
+        area: "Teatro",
+        clase: 7,
+        fase: "Ensayo",
+        tema: "Ensayo 4: Práctica de escenas, interpretación de textos, expresión corporal, proyección de voz y producción",
+        competencia: COMP_BASICO3_TEATRO_2,
+        indicador: IND_BASICO3_TEATRO_6,
+        contenido: "Ensayo 4: Práctica de escenas, interpretación de textos, expresión corporal, proyección de voz e integración de elementos de producción.",
+        habilidadesBlandas: [
+          "Proyección vocal segura y dicción clara",
+          "Coherencia entre cuerpo, emoción y palabra",
+          "Cooperación en el manejo de utilería y producción"
+        ],
+        habitoCovey: {
+          titulo: "Hábito 1: Ser Proactivo",
+          explicacion: "Cada actor asume la responsabilidad de proyectar su voz con claridad, sostener la caracterización física de su personaje e integrar sus elementos de producción."
+        },
+        materiales: [
+          "Libretos personales",
+          "Elementos de utilería, escenografía básica y pistas sonoras",
+          "Rúbrica impresa de Ensayo 4"
+        ],
+        momentos: [
+          {
+            nombre: "1. Introducción motivante y explicación del tema",
+            tiempo: 12,
+            actividades: [
+              "<strong>Calentamiento Vocal y Articulatorio:</strong> Respiración diafragmática, relajación mandibular, resonadores vocales y ejercicio de proyección hacia la última fila del salón."
+            ]
+          },
+          {
+            nombre: "2. Trabajo individual",
+            tiempo: 13,
+            actividades: [
+              "<strong>Repaso de Memorización y Caracterización Vocal:</strong> Cada estudiante practica sus líneas sin leer el libreto aplicando el timbre de voz, ritmo y postura física de su personaje."
+            ]
+          },
+          {
+            nombre: "3. Trabajo grupal",
+            tiempo: 30,
+            actividades: [
+              "<strong>Ensayo Integrado de Actuación, Voz y Producción (Ensayo 4):</strong> Cada equipo ensaya la obra completa de pie integrando expresión corporal, proyección vocal, efectos sonoros/música y manejo de utilería y escenografía."
+            ]
+          },
+          {
+            nombre: "4. Plenaria y actividad sugerida",
+            tiempo: 15,
+            actividades: [
+              "<strong>Evaluación de Interpretación y Producción:</strong> La docente califica Ensayo 4 (interpretación de textos, voz, expresión corporal e integración de producción) y brinda retroalimentación puntual.",
+              "<strong>Actividad Sugerida — «Ensayo de Pies de Entrada Ágiles»:</strong> Practicar el encadenamiento rápido de diálogos eliminando silencios muertos entre parlamentos para mantener el ritmo dramático."
+            ]
+          }
+        ],
+        evaluacion: [
+          { proyecto: "Proyecto 3 — Proceso de Ensayos (Ensayo 4: 5 pts)", detalle: "Rúbrica de ensayo: interpreta textos con expresión corporal, proyección de voz e integración de elementos de producción." }
+        ]
+      },
+      {
+        area: "Teatro",
+        clase: 8,
+        fase: "Ensayo",
+        tema: "Ensayo 5: Ensayo general, integración de escenas, personajes y recursos escénicos",
+        competencia: COMP_BASICO3_TEATRO_3,
+        indicador: IND_BASICO3_TEATRO_7,
+        contenido: "Ensayo 5: Ensayo general, integración de escenas, personajes y recursos escénicos. Corrección de detalles y preparación final de la obra teatral.",
+        habilidadesBlandas: [
+          "Reflexión crítica sobre el mensaje y hecho dramático",
+          "Temple escénico y solidaridad ante imprevistos",
+          "Compromiso con la excelencia colectiva"
+        ],
+        habitoCovey: {
+          titulo: "Hábito 7: Afilar la Sierra",
+          explicacion: "Realizar un ensayo general completo sin interrupciones, reflexionando sobre el mensaje dramático de la obra y puliendo los últimos detalles escénicos."
+        },
+        materiales: [
+          "Vestuario, utilería y escenografía completa de cada compañía",
+          "Bocina para efectos sonoros/música",
+          "Rúbrica final de Ensayo 5"
+        ],
+        momentos: [
+          {
+            nombre: "1. Introducción motivante y explicación del tema",
+            tiempo: 12,
+            actividades: [
+              "<strong>Calentamiento Integral de Compañía:</strong> Activación física, vocal y de enfoque mental antes de iniciar el ensayo general."
+            ]
+          },
+          {
+            nombre: "2. Trabajo individual",
+            tiempo: 13,
+            actividades: [
+              "<strong>Chequeo de Utilería, Vestuario y Portafolio Completo:</strong> Cada estudiante verifica su vestuario y utilería en bastidores y entrega su portafolio físico completo de Teatro para revisión final."
+            ]
+          },
+          {
+            nombre: "3. Trabajo grupal",
+            tiempo: 30,
+            actividades: [
+              "<strong>Ensayo General Completo de la Obra Teatral (Ensayo 5):</strong> Cada equipo realiza una corrida general sin libreto integrando escenas, personajes, vestuario, utilería, escenografía, sonido y saludo final (venia)."
+            ]
+          },
+          {
+            nombre: "4. Plenaria y actividad sugerida",
+            tiempo: 15,
+            actividades: [
+              "<strong>Reflexión Dramática y Cierre de Ensayos (Proyecto 2 y 3):</strong> Breve reflexión grupal sobre el mensaje y hecho dramático presentado por cada compañía; cierre de calificación de Ensayos (completa 25 pts) y Portafolio de Teatro (completa 25 pts), y recordatorio de fecha de la Presentación Final (fuera de las 8 clases).",
+              "<strong>Actividad Sugerida — «Improvisación de Rescate en Personaje»:</strong> Practicar en 2 minutos cómo apoyar a un compañero con una réplica coherente dentro de la situación dramática si ocurre un olvido de texto."
+            ]
+          }
+        ],
+        evaluacion: [
+          { proyecto: "Proyecto 3 — Proceso de Ensayos (Ensayo 5: 5 pts) y Proyecto 2 — Portafolio (Cierre: 5 pts)", detalle: "Ensayo general completo integrando escenas, personajes y recursos escénicos (completa 25 pts) + revisión final de folder completo (completa 25 pts)." },
+          { proyecto: "Proyecto 4 — Presentación Final (25 pts — Fecha posterior)", detalle: "Puesta en escena final de la obra teatral frente al público (evaluada en fecha posterior)." }
+        ]
+      }
+    ];
+
+    // Estado de navegación
+    const state = {
+      danzaSelected: 1,
+      danzaShowAll: false,
+      teatroSelected: 1,
+      teatroShowAll: false
+    };
+
+    // Genera el HTML de una tarjeta de Planificación Diaria completa
+    function renderLessonCard(plan, totalClases, showNavControls = true) {
+      const isEnsayo = plan.fase === "Ensayo";
+      const phaseBadgeClass = isEnsayo
+        ? "bg-[#FACC15] text-[#15368A]"
+        : "bg-blue-100 text-[#15368A] border border-blue-200";
+
+      const areaKey = plan.area.toLowerCase();
+
+      const momentosHtml = plan.momentos.map((m, idx) => {
+        const listItems = m.actividades.map(act => `<li class="leading-relaxed">${act}</li>`).join('');
+        return `
+          <tr class="${idx % 2 === 1 ? 'bg-slate-50/70' : 'bg-white'} hover:bg-blue-50/30 transition">
+            <td class="py-3.5 px-4 border-r border-slate-200 align-top w-56 sm:w-64">
+              <div class="font-extrabold text-[#15368A] text-xs sm:text-sm">${m.nombre}</div>
+              <button type="button" onclick="resetTimer(${m.tiempo})" class="no-print mt-1.5 inline-flex items-center gap-1 text-[11px] font-bold px-2 py-0.5 rounded bg-blue-50 text-[#3B66B3] hover:bg-[#15368A] hover:text-[#FACC15] transition cursor-pointer" title="Cargar ${m.tiempo} min en el reloj superior">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                ${m.tiempo} min
+              </button>
+              <span class="hidden print:inline-block mt-1 text-xs font-bold text-slate-600">${m.tiempo} min</span>
+            </td>
+            <td class="py-3.5 px-4 align-top text-xs sm:text-sm text-slate-700">
+              <ul class="list-disc pl-4 space-y-1.5">
+                ${listItems}
+              </ul>
+            </td>
+          </tr>
+        `;
+      }).join('');
+
+      const materialesHtml = plan.materiales.map(mat => `
+        <li class="flex items-start gap-2 text-xs sm:text-sm text-slate-700">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#15368A] mt-2 flex-shrink-0"></span>
+          <span>${mat}</span>
+        </li>
+      `).join('');
+
+      const evalHtml = plan.evaluacion.map(ev => `
+        <div class="bg-white border border-slate-200 border-l-4 border-l-[#FACC15] rounded-lg p-3">
+          <div class="text-xs font-extrabold italic uppercase text-[#15368A] mb-1">${ev.proyecto}</div>
+          <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">${ev.detalle}</p>
+        </div>
+      `).join('');
+
+      const habilidadesHtml = (plan.habilidadesBlandas || []).map(hab => `
+        <li class="flex items-start gap-2 text-xs sm:text-sm text-slate-700">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#3B66B3] mt-2 flex-shrink-0"></span>
+          <span>${hab}</span>
+        </li>
+      `).join('');
+
+      const coveyHtml = plan.habitoCovey ? `
+        <div class="bg-white border border-slate-200 border-l-4 border-l-[#15368A] rounded-lg p-3.5 flex flex-col justify-between">
+          <div>
+            <div class="inline-flex items-center gap-1.5 bg-[#15368A] text-[#FACC15] text-[11px] font-extrabold italic uppercase px-2.5 py-0.5 rounded mb-1.5">
+              <span>${plan.habitoCovey.titulo}</span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">
+              <strong class="text-[#15368A]">¿Por qué aplica?</strong> ${plan.habitoCovey.explicacion}
+            </p>
+          </div>
+        </div>
+      ` : '';
+
+      const navFooterHtml = showNavControls ? `
+        <div class="mt-6 pt-4 border-t border-slate-200 flex items-center justify-between gap-3 no-print">
+          <button
+            type="button"
+            onclick="selectClase('${areaKey}', ${plan.clase - 1})"
+            ${plan.clase === 1 ? 'disabled' : ''}
+            class="px-4 py-2 rounded-lg text-xs sm:text-sm font-bold italic flex items-center gap-1.5 transition ${plan.clase === 1 ? 'bg-slate-100 text-slate-400 cursor-not-allowed' : 'bg-[#3B66B3] hover:bg-[#15368A] text-white cursor-pointer shadow-2xs'}"
+          >
+            ← Clase Anterior
+          </button>
+          <span class="text-xs font-extrabold italic uppercase text-slate-500">
+            ${plan.area} • Clase ${plan.clase} de ${totalClases}
+          </span>
+          <button
+            type="button"
+            onclick="selectClase('${areaKey}', ${plan.clase + 1})"
+            ${plan.clase === totalClases ? 'disabled' : ''}
+            class="px-4 py-2 rounded-lg text-xs sm:text-sm font-bold italic flex items-center gap-1.5 transition ${plan.clase === totalClases ? 'bg-slate-100 text-slate-400 cursor-not-allowed' : 'bg-[#15368A] hover:bg-[#0F2766] text-[#FACC15] cursor-pointer shadow-2xs'}"
+          >
+            Siguiente Clase →
+          </button>
+        </div>
+      ` : '';
+
+      return `
+        <article class="montano-card p-5 sm:p-7">
+          <!-- Cabecera de la Clase -->
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 pb-4 border-b border-slate-200 mb-5">
+            <div>
+              <div class="flex flex-wrap items-center gap-2 mb-1.5">
+                <span class="bg-[#15368A] text-white text-xs font-extrabold italic uppercase px-3 py-1 rounded-md">
+                  ${plan.area.toUpperCase()} • CLASE ${plan.clase}
+                </span>
+                <span class="text-xs font-extrabold uppercase px-2.5 py-1 rounded-md ${phaseBadgeClass}">
+                  ${plan.fase}
+                </span>
+                <span class="text-xs font-bold text-slate-600 bg-slate-100 border border-slate-200 px-2.5 py-1 rounded-md">
+                  Duración: 70 minutos
+                </span>
+              </div>
+              <h3 class="text-lg sm:text-2xl font-extrabold text-[#15368A] tracking-tight">
+                ${plan.tema}
+              </h3>
+            </div>
+          </div>
+
+          <!-- Datos Curriculares Oficiales -->
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-3.5 mb-4">
+            <div class="bg-blue-50/60 border border-blue-200 border-l-4 border-l-[#15368A] rounded-lg p-3.5">
+              <div class="text-[11px] font-extrabold italic uppercase text-[#15368A] mb-1">Competencia</div>
+              <p class="text-xs sm:text-sm text-slate-800 font-medium leading-relaxed">${plan.competencia}</p>
+            </div>
+            <div class="bg-slate-50 border border-slate-200 border-l-4 border-l-[#3B66B3] rounded-lg p-3.5">
+              <div class="text-[11px] font-extrabold italic uppercase text-[#3B66B3] mb-1">Indicador de Logro</div>
+              <p class="text-xs sm:text-sm text-slate-800 font-medium leading-relaxed">${plan.indicador}</p>
+            </div>
+            <div class="bg-slate-50 border border-slate-200 border-l-4 border-l-[#FACC15] rounded-lg p-3.5">
+              <div class="text-[11px] font-extrabold italic uppercase text-[#15368A] mb-1">Contenido Dosificado</div>
+              <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">${plan.contenido}</p>
+            </div>
+          </div>
+
+          <!-- Formación Socioemocional: Habilidades Blandas y 7 Hábitos de Franklin Covey -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-3.5 mb-5 bg-slate-50/90 border border-slate-200 rounded-xl p-4">
+            <div class="bg-white border border-slate-200 border-l-4 border-l-[#3B66B3] rounded-lg p-3.5">
+              <div class="flex items-center gap-1.5 text-[11px] font-extrabold italic uppercase text-[#15368A] mb-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[#3B66B3]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+                <span>Competencias / Habilidades Blandas a Desarrollar</span>
+              </div>
+              <ul class="space-y-1">
+                ${habilidadesHtml}
+              </ul>
+            </div>
+            ${coveyHtml}
+          </div>
+
+          <!-- Materiales Necesarios -->
+          <div class="bg-amber-50/70 border border-amber-200 rounded-xl p-4 mb-5">
+            <div class="flex items-center gap-2 text-xs sm:text-sm font-extrabold italic uppercase text-[#15368A] mb-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[#15368A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+              </svg>
+              <span>Materiales Necesarios para la Clase</span>
+            </div>
+            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5">
+              ${materialesHtml}
+            </ul>
+          </div>
+
+          <!-- Tabla de los 4 Momentos Metodológicos (70 minutos) -->
+          <div class="mb-5">
+            <h4 class="text-xs sm:text-sm font-extrabold italic uppercase text-[#15368A] mb-2.5 flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-[#FACC15] border border-[#15368A]"></span>
+              Secuencia Didáctica Detallada — 4 Momentos Metodológicos (Total: 70 Minutos)
+            </h4>
+            <div class="overflow-x-auto rounded-xl border border-slate-200 shadow-2xs">
+              <table class="w-full text-left border-collapse">
+                <thead>
+                  <tr class="bg-[#15368A] text-white text-xs uppercase italic">
+                    <th class="py-3 px-4 font-extrabold border-r border-white/15">Momento y Tiempo</th>
+                    <th class="py-3 px-4 font-extrabold text-[#FACC15]">Desarrollo Paso a Paso de Actividades y Sugerencias</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-200">
+                  ${momentosHtml}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Bloque de Evaluación y Proyecto Asignado -->
+          <div class="bg-blue-50/70 border border-blue-200 rounded-xl p-4">
+            <div class="flex items-center gap-2 text-xs sm:text-sm font-extrabold italic uppercase text-[#15368A] mb-2.5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[#15368A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+                <path d="M9 11l3 3L22 4"></path>
+                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+              </svg>
+              <span>Evaluación y Vinculación a Proyectos (25 Pts C/U)</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              ${evalHtml}
+            </div>
+          </div>
+
+          ${navFooterHtml}
+        </article>
+      `;
+    }
+
+    // Renderiza la barra de botones numerados en orden para cada área
+    function renderSelectorBar(areaKey) {
+      const list = areaKey === 'danza' ? planesDanza : planesTeatro;
+      const selected = areaKey === 'danza' ? state.danzaSelected : state.teatroSelected;
+      const showAll = areaKey === 'danza' ? state.danzaShowAll : state.teatroShowAll;
+      const barEl = document.getElementById(`${areaKey}-selector-bar`);
+
+      barEl.innerHTML = list.map(item => {
+        const isSelected = !showAll && item.clase === selected;
+        const isEnsayo = item.fase === 'Ensayo';
+        let btnClass = '';
+
+        if (isSelected) {
+          btnClass = 'bg-[#15368A] text-[#FACC15] border-2 border-[#15368A] shadow-sm';
+        } else if (isEnsayo) {
+          btnClass = 'bg-amber-50 hover:bg-amber-100 text-amber-950 border border-amber-300';
+        } else {
+          btnClass = 'bg-slate-50 hover:bg-blue-50 text-[#15368A] border border-slate-200';
+        }
+
+        return `
+          <button
+            type="button"
+            onclick="selectClase('${areaKey}', ${item.clase})"
+            class="p-2.5 rounded-xl text-left transition cursor-pointer flex flex-col justify-between ${btnClass}"
+          >
+            <div class="flex items-center justify-between w-full mb-0.5">
+              <span class="text-xs font-extrabold italic uppercase">Clase ${item.clase}</span>
+              <span class="text-[10px] font-bold px-1.5 py-0.2 rounded ${isSelected ? 'bg-[#FACC15] text-[#15368A]' : (isEnsayo ? 'bg-amber-200/80 text-amber-900' : 'bg-blue-100 text-[#15368A]')}">
+                ${item.fase}
+              </span>
+            </div>
+            <span class="text-[11px] font-medium line-clamp-1 ${isSelected ? 'text-white' : 'text-slate-600'}">
+              ${item.tema}
+            </span>
+          </button>
+        `;
+      }).join('');
+    }
+
+    // Renderiza las tarjetas de clase de un área
+    function renderAreaPlans(areaKey) {
+      const list = areaKey === 'danza' ? planesDanza : planesTeatro;
+      const selected = areaKey === 'danza' ? state.danzaSelected : state.teatroSelected;
+      const showAll = areaKey === 'danza' ? state.danzaShowAll : state.teatroShowAll;
+      const container = document.getElementById(`${areaKey}-plan-container`);
+      const allBtn = document.getElementById(`btn-all-${areaKey}`);
+
+      renderSelectorBar(areaKey);
+
+      if (showAll) {
+        allBtn.textContent = "Ver una clase a la vez";
+        allBtn.className = "text-xs font-bold px-3 py-1.5 rounded-lg bg-[#15368A] text-[#FACC15] transition cursor-pointer";
+        container.innerHTML = list.map(p => renderLessonCard(p, list.length, false)).join('');
+      } else {
+        allBtn.textContent = `Ver todas (${list.length} clases)`;
+        allBtn.className = "text-xs font-bold px-3 py-1.5 rounded-lg border border-[#15368A] text-[#15368A] hover:bg-blue-50 transition cursor-pointer";
+        const currentPlan = list.find(p => p.clase === selected) || list[0];
+        container.innerHTML = renderLessonCard(currentPlan, list.length, true);
+      }
+    }
+
+    function selectClase(areaKey, claseNum) {
+      const max = areaKey === 'danza' ? planesDanza.length : planesTeatro.length;
+      if (claseNum < 1 || claseNum > max) return;
+
+      if (areaKey === 'danza') {
+        state.danzaSelected = claseNum;
+        state.danzaShowAll = false;
+      } else {
+        state.teatroSelected = claseNum;
+        state.teatroShowAll = false;
+      }
+      renderAreaPlans(areaKey);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function toggleShowAll(areaKey) {
+      if (areaKey === 'danza') {
+        state.danzaShowAll = !state.danzaShowAll;
+      } else {
+        state.teatroShowAll = !state.teatroShowAll;
+      }
+      renderAreaPlans(areaKey);
+    }
+
+    // Filtro interno de la pestaña de Recuperación
+    function filterRecuperacion(mode) {
+      const blockDanza = document.getElementById('rec-block-danza');
+      const blockTeatro = document.getElementById('rec-block-teatro');
+      const btns = ['ambas', 'danza', 'teatro'];
+
+      btns.forEach(b => {
+        const btnEl = document.getElementById(`rec-filter-${b}`);
+        if (b === mode) {
+          btnEl.className = "px-3.5 py-1.5 rounded-lg text-xs font-extrabold italic uppercase bg-[#15368A] text-[#FACC15] shadow-2xs transition cursor-pointer";
+        } else {
+          btnEl.className = "px-3.5 py-1.5 rounded-lg text-xs font-extrabold italic uppercase bg-slate-100 hover:bg-blue-50 text-[#15368A] border border-slate-300 transition cursor-pointer";
+        }
+      });
+
+      if (mode === 'ambas') {
+        blockDanza.classList.remove('hidden');
+        blockTeatro.classList.remove('hidden');
+      } else if (mode === 'danza') {
+        blockDanza.classList.remove('hidden');
+        blockTeatro.classList.add('hidden');
+      } else {
+        blockDanza.classList.add('hidden');
+        blockTeatro.classList.remove('hidden');
+      }
+    }
+
+    // Renderiza la vista imprimible con todas las clases en orden, evaluación y recuperación
+    function renderPrintAllView() {
+      const printContainer = document.getElementById('print-all-container');
+      const danzaHeader = `
+        <div class="bg-[#15368A] text-white px-5 py-3 rounded-xl font-extrabold italic uppercase text-base sm:text-lg tracking-wide">
+          SECCIÓN 1: PLANIFICACIÓN DIARIA DE DANZA — TERCERO BÁSICO (CLASES 1 A 8)
+        </div>
+      `;
+      const teatroHeader = `
+        <div class="bg-[#15368A] text-white px-5 py-3 rounded-xl font-extrabold italic uppercase text-base sm:text-lg tracking-wide mt-8">
+          SECCIÓN 2: PLANIFICACIÓN DIARIA DE TEATRO — TERCERO BÁSICO (CLASES 1 A 8)
+        </div>
+      `;
+      const evalHeader = `
+        <div class="bg-[#15368A] text-white px-5 py-3 rounded-xl font-extrabold italic uppercase text-base sm:text-lg tracking-wide mt-8">
+          SECCIÓN 3: DISTRIBUCIÓN DE EVALUACIÓN — DANZA (100 PTS) Y TEATRO (100 PTS)
+        </div>
+      `;
+      const recHeader = `
+        <div class="bg-[#15368A] text-white px-5 py-3 rounded-xl font-extrabold italic uppercase text-base sm:text-lg tracking-wide mt-8">
+          SECCIÓN 4: TAREAS DE RECUPERACIÓN DETALLADAS — DANZA Y TEATRO (25 PTS C/U)
+        </div>
+      `;
+
+      const danzaCards = planesDanza.map(p => renderLessonCard(p, planesDanza.length, false)).join('');
+      const teatroCards = planesTeatro.map(p => renderLessonCard(p, planesTeatro.length, false)).join('');
+      const evalDanzaClone = document.getElementById('view-evaluacion-danza').innerHTML;
+      const evalTeatroClone = document.getElementById('view-evaluacion-teatro').innerHTML;
+      const recDanzaClone = document.getElementById('rec-block-danza').outerHTML;
+      const recTeatroClone = document.getElementById('rec-block-teatro').outerHTML;
+
+      printContainer.innerHTML = danzaHeader + danzaCards + teatroHeader + teatroCards + evalHeader + evalDanzaClone + evalTeatroClone + recHeader + recDanzaClone + recTeatroClone;
+    }
+
+    // Cambio de pestañas principales
+    function switchTab(tabName) {
+      const views = ['danza', 'teatro', 'evaluacion-danza', 'evaluacion-teatro', 'recuperacion', 'imprimir'];
+      views.forEach(v => {
+        const viewEl = document.getElementById(`view-${v}`);
+        const tabEl = document.getElementById(`tab-${v}`);
+        if (v === tabName) {
+          viewEl.classList.remove('hidden');
+          tabEl.classList.remove('tab-inactive');
+          tabEl.classList.add('tab-active');
+        } else {
+          viewEl.classList.add('hidden');
+          tabEl.classList.remove('tab-active');
+          tabEl.classList.add('tab-inactive');
+        }
+      });
+    }
+
+    // Temporizador de clase para pizarra digital (70 min)
+    let timerSeconds = 70 * 60;
+    let timerInterval = null;
+
+    function updateTimerDisplay() {
+      const mins = Math.floor(timerSeconds / 60);
+      const secs = timerSeconds % 60;
+      const display = document.getElementById('timerDisplay');
+      display.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+      if (timerSeconds <= 60 && timerSeconds > 0) {
+        display.classList.add('text-red-600');
+      } else {
+        display.classList.remove('text-red-600');
+      }
+    }
+
+    function toggleTimer() {
+      const btn = document.getElementById('timerToggleBtn');
+      if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+        btn.textContent = 'Iniciar';
+      } else {
+        btn.textContent = 'Pausar';
+        timerInterval = setInterval(() => {
+          if (timerSeconds > 0) {
+            timerSeconds--;
+            updateTimerDisplay();
+          } else {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            btn.textContent = 'Iniciar';
+          }
+        }, 1000);
+      }
+    }
+
+    function resetTimer(minutes) {
+      if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+        document.getElementById('timerToggleBtn').textContent = 'Iniciar';
+      }
+      timerSeconds = minutes * 60;
+      updateTimerDisplay();
+    }
+
+    // Pantalla completa
+    function toggleFullScreen() {
+      const btnText = document.getElementById('fullscreenText');
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().then(() => {
+          btnText.textContent = 'Salir Pantalla Completa';
+        }).catch(() => {});
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen().then(() => {
+            btnText.textContent = 'Pantalla Completa';
+          }).catch(() => {});
+        }
+      }
+    }
+
+    document.addEventListener('fullscreenchange', () => {
+      const btnText = document.getElementById('fullscreenText');
+      if (!document.fullscreenElement) {
+        btnText.textContent = 'Pantalla Completa';
+      }
+    });
+
+    // Inicializar pizarra digital al cargar
+    window.addEventListener('DOMContentLoaded', () => {
+      renderAreaPlans('danza');
+      renderAreaPlans('teatro');
+      renderPrintAllView();
+      updateTimerDisplay();
+    });
+  </script>
+</body>
+</html>
